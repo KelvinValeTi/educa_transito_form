@@ -14,7 +14,6 @@ export default function Login(){
                 <Text style ={styles.userPasswordTitle}>Usuário:</Text>
                 <TextInput
                     style={styles.input}
-                    placeholderTextColor={'#fff'}
                     onChangeText={setUser}
                     value={user}
                 />
@@ -22,8 +21,6 @@ export default function Login(){
                 <Text style ={styles.userPasswordTitle}>Senha:</Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Digite sua senha"
-                    placeholderTextColor={'#fff'}
                     onChangeText={setPassword}
                     value={password}
                 />
