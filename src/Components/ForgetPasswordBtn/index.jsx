@@ -4,11 +4,14 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 import login from "../../DatabaseTemp"; //database temporario
 
-export default function ForgetPasswordBtn(){
+export default function ForgetPasswordBtn({navigation}){
 
     return(
         <TouchableOpacity 
-            onPress={()=>alert("ir para page de esqueci a senha")}
+            onPress={()=>{
+                alert("ir para page de esqueci a senha");
+                navigation.navigate("RecoveryPassword");
+            }}
         >
             <Text style ={styles.forgetPassword}>Esqueci a senha</Text>
         </TouchableOpacity>

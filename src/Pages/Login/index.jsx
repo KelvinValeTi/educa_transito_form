@@ -4,9 +4,9 @@ import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import styles from "./styles";
 
 import LoginBtn from "../../Components/LoginBtn";
-import ForgetPasswordBtn from "../../Components/ForgetPasswordBTN";
+import ForgetPasswordBtn from "../../Components/ForgetPasswordBtn";
 
-export default function Login(){
+export default function Login({navigation}){
     
     const [user, setUser] = useState();
     const [password, setPassword] = useState();
@@ -32,9 +32,10 @@ export default function Login(){
                 <LoginBtn
                     user={user}
                     password={password}
+                    navigation = {navigation}
                 />
 
-                <ForgetPasswordBtn />
+                <ForgetPasswordBtn navigation = {navigation} />
 
             </View>
         </View>
