@@ -3,6 +3,9 @@ import { View, Text, TouchableOpacity, TextInput } from "react-native";
 
 import styles from "./styles";
 
+import LoginBtn from "../../Components/LoginBtn";
+import ForgetPasswordBtn from "../../Components/ForgetPasswordBTN";
+
 export default function Login(){
     
     const [user, setUser] = useState();
@@ -16,6 +19,7 @@ export default function Login(){
                     style={styles.input}
                     onChangeText={setUser}
                     value={user}
+                    autoCapitalize="none"
                 />
 
                 <Text style ={styles.userPasswordTitle}>Senha:</Text>
@@ -25,11 +29,13 @@ export default function Login(){
                     value={password}
                 />
 
-                <TouchableOpacity style ={styles.loginBtn}>
-                    <Text style={styles.textBtn}>ENTRAR</Text>
-                </TouchableOpacity>
+                <LoginBtn
+                    user={user}
+                    password={password}
+                />
 
-                <Text style ={styles.forgetPassword}>Esqueci a senha</Text>
+                <ForgetPasswordBtn />
+
             </View>
         </View>
     );

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
     userPasswordTitle:{
         color:"#ffffff",
-        fontSize: RFValue(16),
+        fontSize: RFValue(14),
         fontFamily:"Inter_700Bold",
         paddingTop:RFValue(8),
     },
@@ -28,29 +28,6 @@ const styles = StyleSheet.create({
 
         paddingLeft:RFValue(5),
         textAlign:"center",
-    },
-    loginBtn:{
-        backgroundColor:"#C6632C",
-        borderRadius:12,
-        marginBottom:RFValue(10),
-        marginTop:RFValue(30),
-        width:RFValue(220),
-        height:RFValue(40),
-        
-        justifyContent:"center",
-        alignItems:"center",
-        alignSelf:"center"
-    },
-    textBtn:{
-        color:"#23252B",
-        fontSize:RFValue(20),
-        fontFamily:"Inter_700Bold",
-    },
-    forgetPassword:{
-        color:"#ffffff",
-        textAlign:"center",
-        fontFamily:"Inter_700Bold",
-        fontSize:RFValue(14),
     },
 
 });
