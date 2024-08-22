@@ -1,16 +1,21 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import { Text, TouchableOpacity, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
+import { AuthContext } from "../../Contexts/DataProvider";
 
-//import login from "../../DatabaseTemp"; //database temporario
-//arquivo com as configurações da API de usuários
+//conectando a api de usuarios no banco de dados
 import api from '../../ConnectApi';
 
 
 export default function LoginBtn({user, password}){
     
-    const [databaseUsers, setDatabaseUsers] = useState('');
+    const {databaseUsers, setDatabaseUsers} = useContext(AuthContext);
+    const {myUser, setMyUser} = useContext(AuthContext);
 
+    //mensagem de erro
+    const [errorMsg, setErrorMsg] = useState('');
+
+    //fará a conexão com o banco de dados
     async function login(){
         if(databaseUsers === ""){
             try{
@@ -20,31 +25,48 @@ export default function LoginBtn({user, password}){
                 isValid(databaseUsers);
             }catch(err){
                 console.error(err);
+                setErrorMsg("erro de conexão "+err);
             }
         }else{
-            console.log('entrou no else');
             isValid(databaseUsers);
         }
-    }
+    }//fim function login
     
+    //function isValid
     function isValid(databaseUsers){
-        for(let i=0; i<databaseUsers.length; i++){
-            if(user === databaseUsers[i].user_login){
-                console.log("-------------");
-                console.log("usuário existe");
 
-                if(password === databaseUsers[i].password){
-                    console.log("senha correta");
-                    break;
-                }else{
-                   console.log("Senha incorreta");
-                   break;
+        let userExists = false;
+
+        if(user==='' || password ===''){
+            console.log('user vazi0');
+            setErrorMsg('Campos Usuário e/ou Senha devem ser preenchidos!');
+        }else{
+            for(let i=0; i<databaseUsers.length; i++){
+                if(user === databaseUsers[i].user_login){
+                    console.log("-------------");
+                    console.log("usuário existe");
+                    userExists= true;
+                    
+    
+                    if(password === databaseUsers[i].password){
+                        console.log("senha correta");
+                        setMyUser(databaseUsers[i]);
+                        break;
+                    }else{
+                       console.log("Senha incorreta");
+                       setErrorMsg('Senha incorreta!');
+                       break;
+                    }
                 }
             }
         }
-    }
 
-    
+        if(userExists==false){
+            console.log('usuario não existe');
+            setErrorMsg('Usuário inexistente!');
+        }
+
+    }//fim function isValid() 
 
     return(
         <TouchableOpacity 
