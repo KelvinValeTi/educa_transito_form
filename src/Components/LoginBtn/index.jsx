@@ -2,12 +2,13 @@ import React, {useContext, useState} from "react";
 import { Text, TouchableOpacity, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AuthContext } from "../../Contexts/DataProvider";
+import { useNavigation } from "@react-navigation/native";
 
 //conectando a api de usuarios no banco de dados
 import api from '../../ConnectApi';
 
 
-export default function LoginBtn({user, password}){
+export default function LoginBtn({user, password, navigation}){
     
     const {databaseUsers, setDatabaseUsers} = useContext(AuthContext);
     const {myUser, setMyUser} = useContext(AuthContext);
@@ -38,7 +39,7 @@ export default function LoginBtn({user, password}){
         let userExists = false;
 
         if(user==='' || password ===''){
-            console.log('user vazi0');
+            console.log('user vazio');
             setErrorMsg('Campos Usuário e/ou Senha devem ser preenchidos!');
         }else{
             for(let i=0; i<databaseUsers.length; i++){
@@ -46,11 +47,11 @@ export default function LoginBtn({user, password}){
                     console.log("-------------");
                     console.log("usuário existe");
                     userExists= true;
-                    
     
                     if(password === databaseUsers[i].password){
                         console.log("senha correta");
                         setMyUser(databaseUsers[i]);
+                        navigation.navigate('DashboardUser');
                         break;
                     }else{
                        console.log("Senha incorreta");
