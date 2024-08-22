@@ -9,8 +9,8 @@ export default function ForgetPasswordBtn({navigation}){
     return(
         <TouchableOpacity 
             onPress={()=>{
-                alert("ir para page de esqueci a senha");
-                navigation.navigate("RecoveryPassword");
+                alert("Ainda não implementado");
+                //navigation.navigate("RecoveryPassword");
             }}
         >
             <Text style ={styles.forgetPassword}>Esqueci a senha</Text>

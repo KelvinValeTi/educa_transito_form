@@ -6,6 +6,22 @@ import styles from "./styles";
 import LoginBtn from "../../Components/LoginBtn";
 import ForgetPasswordBtn from "../../Components/ForgetPasswordBtn";
 
+//arquivo com as configurações da API de usuários
+import api from '../../ConnectApi';
+
+async function getDatabaseUsers(){
+    try{
+        const response = await api.get("/users");
+        
+        return response.data;
+    }catch(err){
+        console.error(err);
+        return false;
+    }
+}
+
+const databaseUsers = getDatabaseUsers();
+
 export default function Login({navigation}){
     
     const [user, setUser] = useState();
@@ -30,6 +46,7 @@ export default function Login({navigation}){
                 />
 
                 <LoginBtn
+                    databaseUsers = {databaseUsers}
                     user={user}
                     password={password}
                     navigation = {navigation}

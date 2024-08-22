@@ -1,18 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
 import { Text, TouchableOpacity, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
-import login from "../../DatabaseTemp"; //database temporario
+//import login from "../../DatabaseTemp"; //database temporario
+//arquivo com as configurações da API de usuários
+import api from '../../ConnectApi';
+
 
 export default function LoginBtn({user, password}){
     
-    function isValid(){
-        for(let i=0; i<login.length; i++){
-            if(user === login[i].user){
+    const [databaseUsers, setDatabaseUsers] = useState('');
+
+    async function login(){
+        if(databaseUsers === ""){
+            try{
+                //pegando os usuários do banco de dados
+                const response = await api.get("/users");
+                setDatabaseUsers(response.data);
+                isValid(databaseUsers);
+            }catch(err){
+                console.error(err);
+            }
+        }else{
+            console.log('entrou no else');
+            isValid(databaseUsers);
+        }
+    }
+    
+    function isValid(databaseUsers){
+        for(let i=0; i<databaseUsers.length; i++){
+            if(user === databaseUsers[i].user_login){
                 console.log("-------------");
                 console.log("usuário existe");
 
-                if(password === login[i].password){
+                if(password === databaseUsers[i].password){
                     console.log("senha correta");
                     break;
                 }else{
@@ -23,10 +44,12 @@ export default function LoginBtn({user, password}){
         }
     }
 
+    
+
     return(
         <TouchableOpacity 
             style ={styles.loginBtn}
-            onPress={()=>isValid()}
+            onPress={()=>login()}
         >
             <Text style={styles.textBtn}>ENTRAR</Text>
         </TouchableOpacity>
