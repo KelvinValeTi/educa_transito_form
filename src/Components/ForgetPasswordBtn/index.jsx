@@ -2,8 +2,6 @@ import React from "react";
 import { Text, TouchableOpacity, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
-import login from "../../DatabaseTemp"; //database temporario
-
 export default function ForgetPasswordBtn({navigation}){
 
     return(
