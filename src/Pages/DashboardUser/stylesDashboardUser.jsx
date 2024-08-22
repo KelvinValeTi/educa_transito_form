@@ -7,6 +7,21 @@ const styles = StyleSheet.create({
         backgroundColor: "#23252B",
         alignItems: "center",
     },
+
+    titleContainer:{
+        marginVertical:RFValue(10),
+        alignItems:'center',
+    },
+    titleText:{
+        color:'#ffffff',
+        fontSize:RFValue(18),  
+        fontFamily:"Inter_700Bold",
+    },
+    underlineDecor:{
+        backgroundColor:'#C6632C',
+        width:RFValue(80),
+        height:RFValue(3),
+    },
 });
 
 export default styles;

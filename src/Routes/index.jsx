@@ -15,7 +15,7 @@ export default function Routes(){
         <NavigationContainer>
             <DataProvider>
                 <Stack.Navigator 
-                    initialRouteName='DashboardUser' 
+                    initialRouteName='Login' 
                     screenOptions={{headerShown: false}}
                 >
                     <Stack.Screen name="Login" component={Login}/>
