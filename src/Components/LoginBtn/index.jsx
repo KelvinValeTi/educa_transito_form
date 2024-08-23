@@ -1,12 +1,11 @@
 import React, {useContext, useState} from "react";
-import { Text, TouchableOpacity, StyleSheet} from "react-native";
+import { Text, TouchableOpacity, StyleSheet, Alert} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AuthContext } from "../../Contexts/DataProvider";
 import { useNavigation } from "@react-navigation/native";
 
 //conectando a api de usuarios no banco de dados
 import api from '../../ConnectApi';
-
 
 export default function LoginBtn({user, password, navigation}){
     
@@ -36,25 +35,28 @@ export default function LoginBtn({user, password, navigation}){
     //function isValid
     function isValid(databaseUsers){
 
+        console.log('user: '+user+"//password: "+password)
+
         let userExists = false;
 
         if(user==='' || password ===''){
-            console.log('user vazio');
-            setErrorMsg('Campos Usuário e/ou Senha devem ser preenchidos!');
+            //console.log('user vazio');
+            Alert.alert('ATENÇÃO!!','Usuário e/ou Senha devem ser preenchidos!',[{text:'ok'}]);
         }else{
             for(let i=0; i<databaseUsers.length; i++){
                 if(user === databaseUsers[i].user_login){
-                    console.log("-------------");
-                    console.log("usuário existe");
+                    //console.log("-------------");
+                    //console.log("usuário existe");
                     userExists= true;
     
-                    if(password === databaseUsers[i].password){
-                        console.log("senha correta");
+                    if(password === databaseUsers[i].password){ //senha correta
+                        //console.log("senha correta");
                         setMyUser(databaseUsers[i]);
                         navigation.navigate('DashboardUser');
                         break;
                     }else{
-                       console.log("Senha incorreta");
+                       //console.log("Senha incorreta");
+                       Alert.alert('ATENÇÃO!!','Senha INCORRETA!',[{text:'ok'}]);
                        setErrorMsg('Senha incorreta!');
                        break;
                     }
@@ -62,8 +64,9 @@ export default function LoginBtn({user, password, navigation}){
             }
         }
 
-        if(userExists==false){
-            console.log('usuario não existe');
+        if(userExists==false && !(user==='' || password ==='')){
+            //console.log('usuario não existe');
+            Alert.alert('ATENÇÃO!!','Usuário NÃO existe!',[{text:'ok'}]);
             setErrorMsg('Usuário inexistente!');
         }
 

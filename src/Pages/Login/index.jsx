@@ -7,10 +7,11 @@ import styles from "./styles";
 import LoginBtn from "../../Components/LoginBtn";
 import ForgetPasswordBtn from "../../Components/ForgetPasswordBtn";
 
+
 export default function Login({navigation}){
     
-    const [user, setUser] = useState();
-    const [password, setPassword] = useState();
+    const [user, setUser] = useState('');
+    const [password, setPassword] = useState('');
     
     return(
         <View style={styles.container}>
