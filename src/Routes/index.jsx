@@ -7,6 +7,7 @@ import 'react-native-gesture-handler';
 import Login from "../Pages/Login";
 import DashboardUser from "../Pages/DashboardUser";
 import RecoveryPassword from "../Pages/RecoveryPassword";
+import CadastroAcao from "../Pages/CadastroAcao";
 
 import DataProvider from "../Contexts/DataProvider";
 
@@ -17,7 +18,7 @@ export default function Routes(){
         <NavigationContainer>
             <DataProvider>
                 <Stack.Navigator 
-                    initialRouteName='Login' 
+                    initialRouteName='CadastroAcao' 
                     screenOptions={
                         {headerShown: false, gestureEnabled:false}
                     }
@@ -25,6 +26,7 @@ export default function Routes(){
                     <Stack.Screen name="Login" component={Login}/>
                     <Stack.Screen name="RecoveryPassword" component={RecoveryPassword} />
                     <Stack.Screen name="DashboardUser" component={DashboardUser}/>
+                    <Stack.Screen name="CadastroAcao" component={CadastroAcao}/>
                 </Stack.Navigator>
             </DataProvider>
         </NavigationContainer>

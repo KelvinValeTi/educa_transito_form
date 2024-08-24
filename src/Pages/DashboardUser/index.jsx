@@ -56,7 +56,6 @@ export default function DashboardUser({navigation}){
   }, []);
   // fim do gestureEnabled improvisado da documentação do react navigation
 
-  
   return(
     <>
       {
