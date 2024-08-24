@@ -17,6 +17,7 @@ export default function DataProvider({children}){
     const [isConnectedUsers, setIsConnectedUsers] = useState(false);
     const [isConnectedAcoes, setIsConnectedAcoes] = useState(false);
 
+
     return (
         <AuthContext.Provider value={{
             databaseUsers, 
@@ -35,7 +36,7 @@ export default function DataProvider({children}){
             setIsConnectedAcoes,
 
             minhasAcoes,
-            setMinhasAcoes
+            setMinhasAcoes,
             }}
         >
             {children}

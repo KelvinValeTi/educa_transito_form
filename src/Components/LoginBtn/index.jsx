@@ -31,7 +31,7 @@ export default function LoginBtn({user, password, navigation}){
                     if(password === databaseUsers[i].password){ //senha correta
                         //console.log("senha correta");
                         setMyUser(databaseUsers[i]);
-                        setIsConnectedAcoes(false); //gambiarra
+                        setIsConnectedAcoes(false); //vai obrigar o reload toda vez que muda de usuário
                         navigation.navigate('DashboardUser');
                         break;
                     }else{
