@@ -8,6 +8,7 @@ export default function LoginBtn({user, password, navigation}){
     
     const {databaseUsers, setDatabaseUsers} = useContext(AuthContext);
     const {myUser, setMyUser} = useContext(AuthContext);
+    const {setIsConnectedAcoes} = useContext(AuthContext);
 
     //function isValid
     function isValid(databaseUsers){
@@ -30,6 +31,7 @@ export default function LoginBtn({user, password, navigation}){
                     if(password === databaseUsers[i].password){ //senha correta
                         //console.log("senha correta");
                         setMyUser(databaseUsers[i]);
+                        setIsConnectedAcoes(false); //gambiarra
                         navigation.navigate('DashboardUser');
                         break;
                     }else{

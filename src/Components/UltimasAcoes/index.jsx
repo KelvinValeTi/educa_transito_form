@@ -4,41 +4,6 @@ import {Text, TouchableOpacity, FlatList} from "react-native";
 import styles from "./styles";
 import { AuthContext } from "../../Contexts/DataProvider";
 
-//db temp
-const DATA = [
-    {
-      id: 1,
-      projeto: 'Detran vai à Escola',
-      local: 'Av. Daniel de LaTouche, em frente ao condominio Jardins',
-      data_acao:'xx/xx/xxxx'
-    },
-    {
-        id: 2,
-        projeto: 'Detran Volante',
-        local: 'Equatorial Energia',
-        data_acao:'xx/xx/xxxx'
-    },
-    {
-        id: 3,
-        projeto: 'Detran Cultural',
-        local: 'Parque Rangedor',
-        data_acao:'xx/xx/xxxx'
-    },
-    {
-        id: 4,
-        projeto: 'Detran Cultural',
-        local: 'Parque Rangedor',
-        data_acao:'xx/xx/xxxx'
-    },
-    {
-        id: 5,
-        projeto: 'Detran Cultural',
-        local: 'Parque Rangedor',
-        data_acao:'xx/xx/xxxx'
-    },
-];
-
-
 //component thumbnail da operação
 const Acao = ({projeto, local, dataAcao}) => (
     <TouchableOpacity style={styles.acaoThumbnail}>
@@ -52,7 +17,8 @@ const Acao = ({projeto, local, dataAcao}) => (
 export default function UltimasAcoes(){
    
     const {minhasAcoes} = useContext(AuthContext);
-    console.log(minhasAcoes);
+
+    //ordenar este vetor por data depois.
     
     return(
         <FlatList

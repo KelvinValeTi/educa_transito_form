@@ -13,8 +13,8 @@ import LoadingDatabaseAcoes from "../../Components/LoadingDatabaseAcoes";
 
 export default function DashboardUser(){
 
-  const {isConnectedAcoes} = useContext(AuthContext);
-
+  const {isConnectedAcoes, setIsConnectedAcoes} = useContext(AuthContext);
+  
   return(
     <>
       {
