@@ -1,41 +1,19 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import { Text, TouchableOpacity, StyleSheet, Alert} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AuthContext } from "../../Contexts/DataProvider";
-import { useNavigation } from "@react-navigation/native";
 
-//conectando a api de usuarios no banco de dados
-import api from '../../ConnectApi';
 
 export default function LoginBtn({user, password, navigation}){
     
     const {databaseUsers, setDatabaseUsers} = useContext(AuthContext);
     const {myUser, setMyUser} = useContext(AuthContext);
 
-    //mensagem de erro
-    const [errorMsg, setErrorMsg] = useState('');
-
-    //fará a conexão com o banco de dados
-    async function login(){
-        if(databaseUsers === ""){
-            try{
-                //pegando os usuários do banco de dados
-                const response = await api.get("/users");
-                setDatabaseUsers(response.data);
-                isValid(databaseUsers);
-            }catch(err){
-                console.error(err);
-                setErrorMsg("erro de conexão "+err);
-            }
-        }else{
-            isValid(databaseUsers);
-        }
-    }//fim function login
-    
     //function isValid
     function isValid(databaseUsers){
 
-        console.log('user: '+user+"//password: "+password)
+        //test
+        //console.log('user: '+user+"//password: "+password)
 
         let userExists = false;
 
@@ -57,7 +35,6 @@ export default function LoginBtn({user, password, navigation}){
                     }else{
                        //console.log("Senha incorreta");
                        Alert.alert('ATENÇÃO!!','Senha INCORRETA!',[{text:'ok'}]);
-                       setErrorMsg('Senha incorreta!');
                        break;
                     }
                 }
@@ -67,7 +44,7 @@ export default function LoginBtn({user, password, navigation}){
         if(userExists==false && !(user==='' || password ==='')){
             //console.log('usuario não existe');
             Alert.alert('ATENÇÃO!!','Usuário NÃO existe!',[{text:'ok'}]);
-            setErrorMsg('Usuário inexistente!');
+            
         }
 
     }//fim function isValid() 
@@ -75,7 +52,7 @@ export default function LoginBtn({user, password, navigation}){
     return(
         <TouchableOpacity 
             style ={styles.loginBtn}
-            onPress={()=>login()}
+            onPress={()=>isValid(databaseUsers)}
         >
             <Text style={styles.textBtn}>ENTRAR</Text>
         </TouchableOpacity>

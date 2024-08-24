@@ -11,8 +11,18 @@ export default function DataProvider({children}){
     const [databaseUsers, setDatabaseUsers] = useState('');
     const [myUser, setMyUser] = useState(''); //armazena usuário atual
 
+    const [isConnectedUsers, setIsConnectedUsers] = useState(false);
+
     return (
-        <AuthContext.Provider value={{databaseUsers, setDatabaseUsers, myUser, setMyUser}}>
+        <AuthContext.Provider value={{
+            databaseUsers, 
+            setDatabaseUsers, 
+            myUser, 
+            setMyUser,
+            isConnectedUsers,
+            setIsConnectedUsers
+            }}
+        >
             {children}
         </AuthContext.Provider>
     );
