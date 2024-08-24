@@ -8,13 +8,15 @@ import api from '../../ConnectApi';
 
 export default function LoadingDatabaseAcoes(){
     
-    const coordenador = 'Alexandre'; // temporario
-
-    const {databaseUsers} = useContext(AuthContext); //ao inves disso, pode pegar o nome por parametro
-
     const {isConnectedAcoes, setIsConnectedAcoes} = useContext(AuthContext);
+    const {myUser} = useContext(AuthContext);
 
-    const {databaseAcoes, setDatabaseAcoes} = useContext(AuthContext);
+    //armazena todas as ações de TODOS OS COORDENADORES
+    const {databaseAcoes, setDatabaseAcoes} = useContext(AuthContext); 
+    //console.log(databaseAcoes[2].coordenador);
+
+    //apenas ações do COORDENADOR ATUAL
+    const {setMinhasAcoes} = useContext(AuthContext);
 
     const [errorConnection, setErrorConnection] = useState('');
 
@@ -27,7 +29,9 @@ export default function LoadingDatabaseAcoes(){
                 setIsConnectedAcoes(true);
 
                 console.log('---------');
-                console.log(databaseAcoes);
+                //console.log(databaseAcoes);
+                console.log(armazenaAcao());
+                setMinhasAcoes(armazenaAcao());
             }catch(err){
                 console.error(err);
                 setErrorConnection("Cheque sua conexão com a internet");
@@ -41,7 +45,25 @@ export default function LoadingDatabaseAcoes(){
     }
 
     //vai puxar as informações pelo nome do coordenador e atribuir a minhasAcoes
-    function minhasInfo(coordenador){
+    function armazenaAcao(){
+        let minhasAcoes=[];
+
+        //databaseAcoes[i].coordenador === myUser.name
+        for(let i=0; i<databaseAcoes.length;i++){
+            if(databaseAcoes[i].coordenador === 'Alexandre'){
+                minhasAcoes.push(databaseAcoes[i]);
+            }
+        }
+
+        /*
+        databaseAcoes.forEach(
+            (acao) =>{
+                if(databaseAcoes.coordenador === myUser.name){
+                    minhasAcoes.push(acao);
+                }
+            });
+            */
+            return minhasAcoes;
     }
 
     return(

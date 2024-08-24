@@ -32,7 +32,10 @@ export default function DataProvider({children}){
             setDatabaseAcoes,
             
             isConnectedAcoes,
-            setIsConnectedAcoes
+            setIsConnectedAcoes,
+
+            minhasAcoes,
+            setMinhasAcoes
             }}
         >
             {children}

@@ -1,7 +1,8 @@
-import React from "react";
-import { View, Text, TouchableOpacity, FlatList} from "react-native";
+import React, { useContext } from "react";
+import {Text, TouchableOpacity, FlatList} from "react-native";
 
 import styles from "./styles";
+import { AuthContext } from "../../Contexts/DataProvider";
 
 //db temp
 const DATA = [
@@ -37,6 +38,7 @@ const DATA = [
     },
 ];
 
+
 //component thumbnail da operação
 const Acao = ({projeto, local, dataAcao}) => (
     <TouchableOpacity style={styles.acaoThumbnail}>
@@ -49,9 +51,12 @@ const Acao = ({projeto, local, dataAcao}) => (
 
 export default function UltimasAcoes(){
    
+    const {minhasAcoes} = useContext(AuthContext);
+    console.log(minhasAcoes);
+    
     return(
         <FlatList
-            data={DATA}
+            data={minhasAcoes}
             renderItem={({item}) => 
                 <Acao 
                     projeto={item.projeto}
@@ -59,7 +64,7 @@ export default function UltimasAcoes(){
                     dataAcao={item.data_acao} 
                 />
             }
-                keyExtractor={item => item.id}        
+                keyExtractor={item => item._id} 
         />
     );
 }
