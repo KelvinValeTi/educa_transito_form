@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         fontSize:RFValue(20),
         fontFamily:"Inter_800ExtraBold",
         marginBottom:RFValue(10),
+        textTransform:'capitalize',
     },
     userInfoParagraph:{
         color:"#ffffff",
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
         fontSize:RFValue(13),
         fontFamily:"Inter_700Bold",
         lineHeight:RFValue(15),
+        textTransform:'capitalize',
     }
 
 });

@@ -6,7 +6,7 @@ import { AuthContext } from "../../Contexts/DataProvider";
 //conectando a api de usuarios no banco de dados
 import api from '../../ConnectApi';
 
-export default function LoadingDatabase(){
+export default function LoadingDatabaseUsers(){
     
     const {databaseUsers, setDatabaseUsers} = useContext(AuthContext);
     const {isConnectedUsers, setIsConnectedUsers} = useContext(AuthContext);

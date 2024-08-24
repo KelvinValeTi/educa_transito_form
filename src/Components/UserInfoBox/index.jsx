@@ -1,17 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, TouchableOpacity, Image} from "react-native";
+import { AuthContext } from "../../Contexts/DataProvider";
 
 import styles from "./styles";
 
 export default function UserInfoBox(){
     
-    //DB TEMP
-    const name = 'Rafael Cunha';
-    const cargo = 'Assistente de Trânsito';
-    const setor = 'Educação para o Trânsito';
-    const lotacao = 'Detran Sede';
+    const {myUser} = useContext(AuthContext);    
 
     return(
+        
             <View style={styles.userInfoBox}>
                 <TouchableOpacity>
                     <Image
@@ -21,10 +19,9 @@ export default function UserInfoBox(){
                 </TouchableOpacity>
 
                 <View style={styles.userInfoBoxSubContainer}>
-                    <Text style={styles.userInfoName}>Olá {name}</Text>
-                    <Text style={styles.userInfoParagraph}>{cargo}</Text>
-                    <Text style={styles.userInfoParagraph}>{setor}</Text>
-                    <Text style={styles.userInfoParagraph}>{lotacao}</Text>
+                    <Text style={styles.userInfoName}>Olá {myUser.name}</Text>
+                    <Text style={styles.userInfoParagraph}>{myUser.cargo}</Text>
+                    <Text style={styles.userInfoParagraph}>{myUser.lotacao}</Text>
                 </View>
             </View>
     );

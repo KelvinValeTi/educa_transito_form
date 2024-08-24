@@ -6,7 +6,7 @@ import styles from "./styles";
 
 import LoginBtn from "../../Components/LoginBtn";
 import ForgetPasswordBtn from "../../Components/ForgetPasswordBtn";
-import LoadingDatabase from "../../Components/LoadingDatabase";
+import LoadingDatabaseUsers from "../../Components/LoadingDatabaseUsers";
 
 export default function Login({navigation}){
     
@@ -19,7 +19,7 @@ export default function Login({navigation}){
         <>
         {
             !isConnectedUsers ?
-                <LoadingDatabase /> 
+                <LoadingDatabaseUsers /> 
                 :
                 <View style={styles.container}>
                 <View style={styles.subContainer}>
