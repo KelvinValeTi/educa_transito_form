@@ -5,6 +5,8 @@ import styles from "./styles";
 
 import Projeto from '../../Components/FormCadastroAcao/Projeto';
 import Local from "../../Components/FormCadastroAcao/Local";
+import Municipio from "../../Components/FormCadastroAcao/Municipio";
+
 import CadastrarBtn from "../../Components/FormCadastroAcao/CadastrarBtn";
 
 
@@ -29,10 +31,16 @@ export default function CadastroAcao({navigation}){
                 setLocal = {setLocal}
             />
 
+            <Municipio 
+                setMunicipio = {setMunicipio}
+            />
+
             <CadastrarBtn 
                 projeto={projeto}
                 local ={local}
             />
+
+
         </View>
     );
 }
