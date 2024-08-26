@@ -7,8 +7,10 @@ import styles from "./styles";
 import Projeto from '../../Components/FormCadastroAcao/Projeto';
 import Local from "../../Components/FormCadastroAcao/Local";
 import Municipio from "../../Components/FormCadastroAcao/Municipio";
+import DataAcao from "../../Components/FormCadastroAcao/DataAcao";
 
 import CadastrarBtn from "../../Components/FormCadastroAcao/CadastrarBtn";
+
 
 
 
@@ -20,9 +22,11 @@ export default function CadastroAcao({navigation}){
     const [projeto, setProjeto] = useState('Escolha um projeto');
     const [local, setLocal] = useState('');
     const [municipio, setMunicipio] = useState('');
+    const [dataAcao, setDataAcao] = useState('');
+    
 
     //test
-    //console.log('Projeto: '+projeto+ '|| local: '+local+' || Municipio: '+municipio);
+    //console.log('Projeto: '+projeto+ '|| local: '+local+' || Municipio: '+municipio+ "|| Data: "+dataAcao);
 
 
     return(
@@ -58,6 +62,13 @@ export default function CadastroAcao({navigation}){
                 municipio ={municipio}
                 setMunicipio = {setMunicipio}
             />
+
+            <View style={styles.twoColums}>
+                <DataAcao
+                    dataAcao={dataAcao}
+                    setDataAcao={setDataAcao}
+                ></DataAcao>
+            </View>
 
             <CadastrarBtn 
                 projeto={projeto}
