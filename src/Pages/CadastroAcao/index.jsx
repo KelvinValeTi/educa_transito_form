@@ -22,7 +22,7 @@ export default function CadastroAcao({navigation}){
     const [municipio, setMunicipio] = useState('');
 
     //test
-    console.log(projeto);
+    //console.log('Projeto: '+projeto+ '|| local: '+local+' || Municipio: '+municipio);
 
 
     return(
@@ -54,6 +54,10 @@ export default function CadastroAcao({navigation}){
                 setLocal = {setLocal}
             />
 
+            <Municipio 
+                municipio ={municipio}
+                setMunicipio = {setMunicipio}
+            />
 
             <CadastrarBtn 
                 projeto={projeto}

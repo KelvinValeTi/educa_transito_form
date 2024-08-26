@@ -20,7 +20,7 @@ export default function ProjetoThumbnail({nomeProjeto, setProjeto, setOpenProjet
         >
             <Text style={styles.nomeProjeto}>{nomeProjeto}</Text>
             <Image 
-                source={require('../../../../assets/add_icon.png')}
+                source={require('../../../../assets/arrow_forward.png')}
                 style={styles.icon}
             />
         </TouchableOpacity>

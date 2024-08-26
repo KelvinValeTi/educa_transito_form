@@ -1,47 +1,20 @@
-import React, {useState} from "react";
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, TextInput, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
-import DropDownPicker from 'react-native-dropdown-picker';
-import municipiosDb from "./municipios"; //banco de dados dos 217 municipios do ma
 
-
-/**
- * ajeitar searchable
- * ajeitar teclado 
- *
- */
-
-export default function Municipio({setMunicipio}){
-
-    //dropdownPicker lib
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState('');
-    const [items, setItems] = useState(municipiosDb);
-
-
+export default function Municipio({municipio, setMunicipio}){
+    
     return(
         <View style={styles.container}>
             <Text style={styles.label}>Município:</Text>
-
-            <DropDownPicker
-                open={open}
-                value={value}
-                items={items}
-                setOpen={setOpen}
-                setValue={setValue}
-                setItems={setItems}
-
-                onChangeValue={setMunicipio}
-
-                placeholder="Selecione um projeto"
-                placeholderStyle={{
-                    color: "grey"
-                }}
-
-                searchable={true}
-
+            <TextInput
                 style={styles.input}
+                onChangeText={setMunicipio}
+                value={municipio}
+                autoCapitalize="none"
+                placeholder="Digite o Município"
+                placeholderTextColor="#bebebe"
             />
         </View>
     );
@@ -58,15 +31,14 @@ const styles = StyleSheet.create({
         fontSize:RFValue(16),
         fontFamily:"Inter_600SemiBold",
         textAlign:'left',
-        paddingLeft:RFValue(15),
+        paddingLeft:RFValue(15)
     },
     input:{
         backgroundColor:'#FFFFFF',
         width:'auto',
         height:RFValue(40),
-        borderRadius:RFValue(8),
-        paddingLeft: RFValue(15),
+        borderRadius:RFValue(24),
+        textAlign:'center',
+        fontFamily:"Inter_500Medium",
     }
 });
-
-
