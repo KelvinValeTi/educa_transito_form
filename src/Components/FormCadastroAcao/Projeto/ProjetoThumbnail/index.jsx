@@ -1,16 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import { Text, Image, TouchableOpacity, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 
 export default function ProjetoThumbnail({nomeProjeto, setProjeto, setOpenProjeto}){
     
+    const [selected, setSelected] = useState(false);
+
     return(
         <TouchableOpacity
-            style={styles.projeto}
+            style={styles.projeto(selected)}
             onPress={()=>{
-                setOpenProjeto(false);
-                setProjeto(nomeProjeto);
+                setSelected(true);
+                setTimeout(()=>{
+                    setOpenProjeto(false);
+                    setProjeto(nomeProjeto);
+                },1000);
             }}
         >
             <Text style={styles.nomeProjeto}>{nomeProjeto}</Text>
@@ -24,9 +29,9 @@ export default function ProjetoThumbnail({nomeProjeto, setProjeto, setOpenProjet
 }
 
 const styles = StyleSheet.create({
-    projeto:{
+    projeto: selected=>({
         width:RFValue(300),
-        backgroundColor: '#C6632C',
+        backgroundColor: selected? '#5AA93F':'#C6632C',
         borderRadius:RFValue(20),
         flexDirection:'row',
         justifyContent:'space-between',
@@ -35,7 +40,7 @@ const styles = StyleSheet.create({
         paddingVertical:RFValue(5),
         
         marginBottom:RFValue(10)
-    },
+    }),
     nomeProjeto:{
         color:'#FFFFFF',
         fontSize:RFValue(16),
