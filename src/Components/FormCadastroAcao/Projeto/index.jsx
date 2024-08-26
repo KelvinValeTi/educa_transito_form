@@ -1,43 +1,32 @@
-import React, {useState} from "react";
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, SectionList } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
-import DropDownPicker from 'react-native-dropdown-picker';
+import ProjetoThumbnail from "./ProjetoThumbnail";
 
-export default function Projeto({projeto, setProjeto}){
+export default function Projeto({setProjeto, setOpenProjeto}){
     
-    //dropdownPicker lib
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState('');
-    const [items, setItems] = useState([
-        {label: 'Detran Vai à escola', value: 'Detran Vai à Escola'},
-        {label: 'Somos Todos Pedestres', value: 'Somos Todos Pedestres'},
-        {label: 'Detran Volante', value: 'Detran Volante'},
-        {label: 'Detran Cultural', value: 'Detran Cultural'},
-
-    ]);
-
+    const projeto = [
+        {
+            title: 'projeto', 
+            data: ['Somos Todos Pedestres', 'Detran Volante', 'DETRAN vai à Escola', 'Direção Certa', 'Se Liga na Via', 'Agente Multiplicador', 'DETRAN Cultural', 'Condutor do Amanhã', 'Conhecendo o DETRAN', 'DETRAN em Ação', 'DETRAN Solidário', 'Expo-DETRAN', 'Feriado bom é Feriado Seguro', 'Humanizar',  'Servidor em Foco', 'Transitarte']
+        }
+    ];
 
     return(
         <View style={styles.container}>
-            <Text style={styles.label}>Projeto:</Text>
-
-            <DropDownPicker 
-                open={open}
-                value={value}
-                items={items}
-                setOpen={setOpen}
-                setValue={setValue}
-                setItems={setItems}
-
-                onChangeValue={setProjeto}
-
-                placeholder="Selecione um projeto"
-                placeholderStyle={{
-                    color: "grey"
-                }}
-
-                style={styles.input}
+            <Text style={styles.label}>Selecione um projeto:</Text>
+            
+            <SectionList
+                sections={projeto}
+                keyExtractor={(item, index) => item + index}
+                renderItem={({item}) => (
+                    <ProjetoThumbnail 
+                        nomeProjeto={item} 
+                        setOpenProjeto={setOpenProjeto}
+                        setProjeto={setProjeto}
+            /> 
+                    )}            
             />
         </View>
     );
@@ -45,24 +34,19 @@ export default function Projeto({projeto, setProjeto}){
 
 const styles = StyleSheet.create({
     container:{
-        marginTop:RFValue(50),
-        width:RFValue(300),
-        gap:RFValue(5)
+        flex:1,
+        marginTop:RFValue(70),
+        width:'100%',
+        alignItems:'center'
+        
     },
     label:{
         color:'#FFFFFF',
-        fontSize:RFValue(16),
-        fontFamily:"Inter_600SemiBold",
-        textAlign:'left',
-        paddingLeft:RFValue(15),
+        fontSize:RFValue(20),
+        marginBottom:RFValue(20),
+        fontFamily:"Inter_700Bold",
+        textAlign:'center',
     },
-    input:{
-        backgroundColor:'#FFFFFF',
-        width:'auto',
-        height:RFValue(40),
-        borderRadius:RFValue(8),
-        paddingLeft: RFValue(15),
-    }
 });
 
 

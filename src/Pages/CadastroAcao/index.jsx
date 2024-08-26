@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import { View, Text} from "react-native";
+import { View, Text, ScrollView, TouchableOpacity} from "react-native";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import styles from "./styles";
 
@@ -10,30 +11,49 @@ import Municipio from "../../Components/FormCadastroAcao/Municipio";
 import CadastrarBtn from "../../Components/FormCadastroAcao/CadastrarBtn";
 
 
+
 export default function CadastroAcao({navigation}){
     
-    const [projeto, setProjeto] = useState('');
+    const [openProjeto, setOpenProjeto] = useState(false);
+    const [openMunicipio, setOpenMunicipio] = useState(false);
+    
+    const [projeto, setProjeto] = useState('Escolha um projeto');
     const [local, setLocal] = useState('');
     const [municipio, setMunicipio] = useState('');
 
+    //test
+    console.log(projeto);
+
 
     return(
-        <View style={styles.container}>
+        <View
+            style={styles.container} 
+        >
+        {openProjeto ? 
+            <Projeto 
+                setOpenProjeto = {setOpenProjeto}
+                setProjeto = {setProjeto}
+            /> 
+            :
+            <KeyboardAwareScrollView 
+            
+        >
             <Text style={styles.title}>Cadastro de Ação</Text>
 
-            <Projeto 
-                projeto ={projeto}
-                setProjeto = {setProjeto}
-            />
+            {/**projeto btn */}
+            <Text style={styles.label}>Selecione o projeto: </Text>
+            <TouchableOpacity 
+                style={styles.btn}
+                onPress={()=>setOpenProjeto(true)}
+            >
+                <Text style={styles.textBtn}>{projeto}</Text>
+            </TouchableOpacity>
 
             <Local 
                 local ={local}
                 setLocal = {setLocal}
             />
 
-            <Municipio 
-                setMunicipio = {setMunicipio}
-            />
 
             <CadastrarBtn 
                 projeto={projeto}
@@ -41,6 +61,9 @@ export default function CadastroAcao({navigation}){
             />
 
 
+            </KeyboardAwareScrollView>
+        }
+        
         </View>
     );
 }

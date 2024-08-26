@@ -22,9 +22,9 @@ export default function Municipio({setMunicipio}){
 
     return(
         <View style={styles.container}>
-            <Text style={styles.label}>Projeto:</Text>
+            <Text style={styles.label}>Município:</Text>
 
-            <DropDownPicker 
+            <DropDownPicker
                 open={open}
                 value={value}
                 items={items}
@@ -49,7 +49,7 @@ export default function Municipio({setMunicipio}){
 
 const styles = StyleSheet.create({
     container:{
-        marginTop:RFValue(50),
+        marginTop:RFValue(10),
         width:RFValue(300),
         gap:RFValue(5)
     },
