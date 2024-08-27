@@ -14,37 +14,13 @@ export default function DashboardUser({navigation}){
   const {isConnectedAcoes, setIsConnectedAcoes} = useContext(AuthContext);
   
   /**
-   * prevenindo que o usuário use o botão do android para voltar pra o login, 
-   * caso o queira, é feito o logoff
+   * prevenindo que o usuário use o botão do android para voltar (POG)
    * 
    * enquanto o react navigation não atualiza o gestureEnabled que só está funcionando em iOS
    */
   React.useEffect(() => {
     const onBackPress = () => {
-      Alert.alert(
-        'Alerta',
-        'Você quer fazer o Logoff?',
-        [
-          {
-            text: 'Não',
-            onPress: () => {
-              // Do nothing
-            },
-            style: 'cancel',
-          },
-          { text: 'Sim', onPress: () =>{
-              //BackHandler.exitApp()
-              console.log('voltando para login');
-              setIsConnectedAcoes(false);
-              //setMinhasAcoes('');
-              navigation.goBack();
-            } 
-          },
-        ],
-        { cancelable: false }
-      );
-
-      return true;
+      return true; 
     };
 
     const backHandler = BackHandler.addEventListener(

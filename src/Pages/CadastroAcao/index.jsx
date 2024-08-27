@@ -4,6 +4,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 import styles from "./styles";
 
+import VoltarBtn from "../../Components/VoltarBtn";
+
 import Projeto from '../../Components/FormCadastroAcao/Projeto';
 import Local from "../../Components/FormCadastroAcao/Local";
 import Municipio from "../../Components/FormCadastroAcao/Municipio";
@@ -33,13 +35,17 @@ export default function CadastroAcao({navigation}){
         <View
             style={styles.container} 
         >
-        {openProjeto ? 
+        {openProjeto ?
             <Projeto 
                 setOpenProjeto = {setOpenProjeto}
                 setProjeto = {setProjeto}
             /> 
             :
             <KeyboardAwareScrollView>
+                <VoltarBtn 
+                    navigation={navigation}
+                /> 
+            
                 <Text style={styles.title}>Cadastro de Ação</Text>
 
                 {/**projeto btn */}

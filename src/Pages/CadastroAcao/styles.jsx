@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     },
     title:{
         color:"#FFFFFF",
-        fontSize:RFValue(20),
+        fontSize:RFValue(24),
         fontFamily:"Inter_700Bold",
-        marginTop:RFValue(50),
+        marginTop:RFValue(20),
         marginBottom:RFValue(30),
         textAlign:'center'
     },  
