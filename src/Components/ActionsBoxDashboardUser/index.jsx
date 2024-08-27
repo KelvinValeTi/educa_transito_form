@@ -3,12 +3,17 @@ import { View, Text, TouchableOpacity, Image} from "react-native";
 
 import styles from "./styles";
 
-export default function ActionsBoxDashboardUser(){
+export default function ActionsBoxDashboardUser({navigation}){
 
     return(
             <View style={styles.actionBoxContainer}>
 
-                <TouchableOpacity style={styles.actionBtn}>
+                <TouchableOpacity 
+                    style={styles.actionBtn}
+                    onPress={()=>{
+                        navigation.navigate('CadastroAcao');
+                    }}
+                >
                     <Image
                         style={styles.icon} 
                         source={require('../../assets/add_icon.png')} 

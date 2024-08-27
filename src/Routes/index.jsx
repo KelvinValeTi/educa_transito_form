@@ -18,7 +18,7 @@ export default function Routes(){
         <NavigationContainer>
             <DataProvider>
                 <Stack.Navigator 
-                    initialRouteName='CadastroAcao' 
+                    initialRouteName='Login' 
                     screenOptions={
                         {headerShown: false, gestureEnabled:false}
                     }

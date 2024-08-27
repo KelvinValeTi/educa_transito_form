@@ -65,7 +65,9 @@ export default function DashboardUser({navigation}){
         <View style={styles.container}>
           <UserInfoBox />
           
-          <ActionsBoxDashboardUser />
+          <ActionsBoxDashboardUser 
+            navigation = {navigation}
+          />
 
           <View style={styles.titleContainer}>
             <Text style={styles.titleText}>ÚLTIMAS AÇÕES</Text>
