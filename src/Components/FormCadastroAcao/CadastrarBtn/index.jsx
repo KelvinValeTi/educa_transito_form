@@ -3,13 +3,20 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 
-export default function CadastrarBtn({projeto, local}){
+export default function CadastrarBtn(
+    {
+    projeto, local, 
+    municipio, dataAcao,
+    horario, publicoAtingido,
+    qtdMaterial, publicoAlvo
+    }
+){
     
     return(
         <View style={styles.container}>
             <TouchableOpacity 
                 onPress={()=>{
-                    console.log('projeto: '+projeto+'// local: '+local)
+                    console.log('Projeto: '+projeto+ '|| local: '+local+' || Municipio: '+municipio+ "|| Data: "+dataAcao+" || horario: "+horario+ "|| publico atingido: "+publicoAtingido+ "|| qtd material: "+qtdMaterial+" || publico alvo: "+publicoAlvo);
                 }}
                 style={styles.btn}
             >

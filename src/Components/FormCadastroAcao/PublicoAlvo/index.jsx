@@ -3,16 +3,16 @@ import { View, Text, TextInput, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 
-export default function Local({local, setLocal}){
+export default function PublicoAlvo({publicoAlvo, setPublicoAlvo}){
     
     return(
         <View style={styles.container}>
-            <Text style={styles.label}>Local:</Text>
+            <Text style={styles.label}>Público alvo:</Text>
             <TextInput
                 style={styles.input}
-                onChangeText={setLocal}
-                value={local}
-                placeholder="Insira o Local"
+                onChangeText={setPublicoAlvo}
+                value={publicoAlvo}
+                placeholder="Defina o público alvo"
                 placeholderTextColor="#bebebe"
             />
         </View>

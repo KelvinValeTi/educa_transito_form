@@ -1,33 +1,19 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import MaskInput from 'react-native-mask-input';
 
-/**
- * 
- * Esse tipo de dado deveria ser do tipo DATE(), mas por enquanto vai ser String com uma máscara de formato data
- * 
- * depois faz uma validação disso, pensa em pull request no projeto
- */
-const exemplo = [/\d/, /\d/, ":", /\d/, /\d/];
 
-export default function Horario({horario, setHorario}){
+export default function PublicoAtingido({PublicoAtingido, setPublicoAtingido}){
     
     return(
         <View style={styles.container}>
-            <Text style={styles.label}>Horario:</Text>
-            <MaskInput
+            <Text style={styles.label}>Público{'\n'}atingido:</Text>
+            <TextInput
                 style={styles.input}
-                onChangeText={setHorario}
-                value={horario}
-                mask={(text) => {
-                    if (text.replace(/\D+/g, "").length <= 4) {
-                      return exemplo
-                    } else {
-                      return exemplo
-                    }
-                }}
+                onChangeText={setPublicoAtingido}
+                value={PublicoAtingido}
                 keyboardType="numeric"
+                placeholder="ex: 150"
                 placeholderTextColor="#bebebe"
             />
         </View>
@@ -41,6 +27,7 @@ const styles = StyleSheet.create({
         gap:RFValue(5)
     },
     label:{
+        width:RFValue(140),
         color:'#FFFFFF',
         fontSize:RFValue(16),
         fontFamily:"Inter_600SemiBold",
@@ -48,7 +35,7 @@ const styles = StyleSheet.create({
     },
     input:{
         backgroundColor:'#FFFFFF',
-        width:RFValue(120),
+        width:'auto',
         height:RFValue(40),
         borderRadius:RFValue(24),
         textAlign:'center',

@@ -35,8 +35,7 @@ const styles = StyleSheet.create({
         color:'#FFFFFF',
         fontSize:RFValue(16),
         fontFamily:"Inter_600SemiBold",
-        textAlign:'left',
-        paddingLeft:RFValue(15)
+        textAlign:'center',
     },
     input:{
         backgroundColor:'#FFFFFF',

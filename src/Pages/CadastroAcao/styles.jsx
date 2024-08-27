@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
         flex:1,
         width:"100%",
         backgroundColor: "#23252B",
-        alignItems:'center'
+        alignItems:'center',
+        paddingTop:RFValue(20)
     },
     title:{
         color:"#FFFFFF",
