@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
         paddingLeft:RFValue(15),
         marginBottom: RFValue(5)
     },
+    twoColumsView:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        width:'auto',
+    },
 
     btn:{
         backgroundColor:'#ffffff',

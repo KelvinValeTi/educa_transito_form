@@ -1,23 +1,32 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import MaskInput, {Masks} from 'react-native-mask-input';
+import MaskInput from 'react-native-mask-input';
 
 /**
  * 
  * Esse tipo de dado deveria ser do tipo DATE(), mas por enquanto vai ser String com uma máscara de formato data
+ * 
+ * depois faz uma validação disso, pensa em pull request no projeto
  */
+const exemplo = [/\d/, /\d/, ":", /\d/, /\d/];
 
-export default function DataAcao({dataAcao, setDataAcao}){
+export default function Horario({horario, setHorario}){
     
     return(
         <View style={styles.container}>
-            <Text style={styles.label}>Data:</Text>
+            <Text style={styles.label}>Horario:</Text>
             <MaskInput
                 style={styles.input}
-                onChangeText={setDataAcao}
-                value={dataAcao}
-                mask={Masks.DATE_DDMMYYYY}
+                onChangeText={setHorario}
+                value={horario}
+                mask={(text) => {
+                    if (text.replace(/\D+/g, "").length <= 4) {
+                      return exemplo
+                    } else {
+                      return exemplo
+                    }
+                }}
                 keyboardType="numeric"
                 placeholderTextColor="#bebebe"
             />

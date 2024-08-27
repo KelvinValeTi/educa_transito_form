@@ -8,8 +8,10 @@ import Projeto from '../../Components/FormCadastroAcao/Projeto';
 import Local from "../../Components/FormCadastroAcao/Local";
 import Municipio from "../../Components/FormCadastroAcao/Municipio";
 import DataAcao from "../../Components/FormCadastroAcao/DataAcao";
+import Horario from "../../Components/FormCadastroAcao/Horario";
 
 import CadastrarBtn from "../../Components/FormCadastroAcao/CadastrarBtn";
+
 
 
 
@@ -23,6 +25,7 @@ export default function CadastroAcao({navigation}){
     const [local, setLocal] = useState('');
     const [municipio, setMunicipio] = useState('');
     const [dataAcao, setDataAcao] = useState('');
+    const [horario, setHorario] = useState('');
     
 
     //test
@@ -63,11 +66,16 @@ export default function CadastroAcao({navigation}){
                 setMunicipio = {setMunicipio}
             />
 
-            <View style={styles.twoColums}>
+            <View style={styles.twoColumsView}>
                 <DataAcao
                     dataAcao={dataAcao}
                     setDataAcao={setDataAcao}
-                ></DataAcao>
+                />
+                <Horario 
+                    horario={horario}
+                    setHorario={setHorario}
+                />
+
             </View>
 
             <CadastrarBtn 
