@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, TouchableOpacity, Image} from "react-native";
+import { AuthContext } from "../../Contexts/DataProvider";
 
 import styles from "./styles";
 
 export default function ActionsBoxDashboardUser({navigation}){
+    const {isConnectedUsers, setIsConnectedUsers} = useContext(AuthContext);
+    const {setMyUser} = useContext(AuthContext);
 
     return(
             <View style={styles.actionBoxContainer}>
@@ -21,10 +24,17 @@ export default function ActionsBoxDashboardUser({navigation}){
                     <Text style={styles.description}>Nova Ação</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.actionBtn}>
+                <TouchableOpacity 
+                     onPress={()=>{
+                        setMyUser('');
+                        setIsConnectedUsers(false);
+                        navigation.goBack();
+                    }} 
+                    style={styles.actionBtn}
+                >
                     <Image
                         style={styles.icon} 
-                        source={require('../../assets/sair_icon.png')} 
+                        source={require('../../assets/sair_icon.png')}
                     />
                     <Text style={styles.description}>Sair/ Logout</Text>
                 </TouchableOpacity>

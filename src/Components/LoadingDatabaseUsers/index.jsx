@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import { View, StyleSheet, Text} from "react-native";
+import { View, StyleSheet, Text, BackHandler, TouchableOpacity} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AuthContext } from "../../Contexts/DataProvider";
 
@@ -22,7 +22,7 @@ export default function LoadingDatabaseUsers(){
                 setIsConnectedUsers(true);
             }catch(err){
                 console.error(err);
-                setErrorConnection("Cheque sua conexão com a internet");
+                setErrorConnection("Cheque sua conexão com a internet, caso persista, entre em contato o desenvolvedor");
             }
     }//fim function connectDataBase
     
@@ -31,15 +31,26 @@ export default function LoadingDatabaseUsers(){
             connectDatabase();
         }, 2000);
         
-    }
+    }    
 
     return(
         <View style= {styles.container}>
             {
                 errorConnection===''?
-                <Text style= {styles.text}>Loading</Text>
+                <Text style= {styles.text}>Carregando Banco de Dados</Text>
                 :
-                <Text style= {styles.text}>{errorConnection}</Text>
+                <>
+                    <Text style= {styles.text}>{errorConnection}</Text>
+                    
+                    <TouchableOpacity 
+                        onPress={()=>{
+                            BackHandler.exitApp();
+                        }}
+                        style= {styles.btn}
+                    >
+                        <Text  style= {styles.textBtn}> Sair</Text>
+                    </TouchableOpacity>
+                </>
             }
             
         </View>
@@ -56,6 +67,11 @@ const styles = StyleSheet.create({
         backgroundColor:"#131313"
    },
    text:{
+    fontSize:RFValue(30),
+    color:"#FFFFFF",
+    textAlign:'center'
+   },
+   textBtn:{
     fontSize:RFValue(30),
     color:"#FFFFFF",
     textAlign:'center'
