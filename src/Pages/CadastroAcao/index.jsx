@@ -105,6 +105,7 @@ export default function CadastroAcao({navigation}){
                     publicoAtingido={publicoAtingido}
                     qtdMaterial={qtdMaterial}
                     publicoAlvo={publicoAlvo}
+                    navigation={navigation}
                 />
             </KeyboardAwareScrollView>
         }

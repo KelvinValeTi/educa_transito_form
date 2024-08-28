@@ -1,7 +1,6 @@
-import React, {useContext} from "react";
+import React from "react";
 import { Text, TouchableOpacity, StyleSheet, Image} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { AuthContext } from "../../Contexts/DataProvider";
 
 
 export default function VoltarBtn({navigation}){
@@ -14,10 +13,7 @@ export default function VoltarBtn({navigation}){
             <Image 
                 style ={styles.icon}
                 source={require('../../assets/arrow_back.png')}
-            /> 
-            {/** caso seja necessario dizer que isso é um botão de voltar
-            <Text style ={styles.text}>Voltar</Text>
-            */}
+            />
         </TouchableOpacity>
     );
 }
@@ -26,10 +22,8 @@ export default function VoltarBtn({navigation}){
 /*STYLES*/
 const styles = StyleSheet.create({
     voltarBtn:{
-        width:'auto',
-        flexDirection:'row',
-        justifyContent:"start",
-        alignItems:"center",
+        width:RFValue(300),
+        alignItems:"left",
         gap:RFValue(10),
         marginTop:RFValue(20),
     },
@@ -37,12 +31,6 @@ const styles = StyleSheet.create({
         width: RFValue(40),
         height: RFValue(40),
     },
-    text:{
-        fontSize:RFValue(18),
-        color:'#FFFFFF',
-        fontFamily:"Inter_600SemiBold",
-        textDecorationLine:'underline',
-    }
 
 });
 

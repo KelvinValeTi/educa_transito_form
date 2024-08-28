@@ -8,6 +8,7 @@ import Login from "../Pages/Login";
 import DashboardUser from "../Pages/DashboardUser";
 import RecoveryPassword from "../Pages/RecoveryPassword";
 import CadastroAcao from "../Pages/CadastroAcao";
+import DashboardAcao from "../Pages/DashboardAcao";
 
 import DataProvider from "../Contexts/DataProvider";
 
@@ -18,7 +19,7 @@ export default function Routes(){
         <NavigationContainer>
             <DataProvider>
                 <Stack.Navigator 
-                    initialRouteName='Login' 
+                    initialRouteName='DashboardAcao' 
                     screenOptions={
                         {headerShown: false, gestureEnabled:false}
                     }
@@ -27,6 +28,7 @@ export default function Routes(){
                     <Stack.Screen name="RecoveryPassword" component={RecoveryPassword} />
                     <Stack.Screen name="DashboardUser" component={DashboardUser}/>
                     <Stack.Screen name="CadastroAcao" component={CadastroAcao}/>
+                    <Stack.Screen name="DashboardAcao" component={DashboardAcao}/>
                 </Stack.Navigator>
             </DataProvider>
         </NavigationContainer>

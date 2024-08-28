@@ -9,7 +9,8 @@ export default function CadastrarBtn({
     projeto, local, 
     municipio, dataAcao,
     horario, publicoAtingido,
-    qtdMaterial, publicoAlvo
+    qtdMaterial, publicoAlvo,
+    navigation
     }
 ){
 
