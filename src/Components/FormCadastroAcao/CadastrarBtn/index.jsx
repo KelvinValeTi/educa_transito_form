@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AuthContext } from "../../../Contexts/DataProvider";
 
+import api from "../../../ConnectApi";
+
 export default function CadastrarBtn({
     projeto, local, 
     municipio, dataAcao,
@@ -13,13 +15,46 @@ export default function CadastrarBtn({
 
     const {myUser} = useContext(AuthContext); //myUser.name é o nome do coordenador
     const coordenador = myUser.name;
+
+    const {minhasAcoes}= useContext(AuthContext);
     
+    //tests logs
+    function testLog(){
+        console.log('Projeto: '+projeto+ '|| local: '+local+' || Municipio: '+municipio+ "|| Data: "+dataAcao+" || horario: "+horario+ "|| publico atingido: "+publicoAtingido+ "|| qtd material: "+qtdMaterial+" || publico alvo: "+publicoAlvo);
+        console.log(coordenador);
+        console.log('---------------');
+        console.log(minhasAcoes);
+    }
+
+    function adicionarAcao(){
+        api.post('/acao', {
+            coordenador: coordenador,
+            projeto: projeto,
+            local: local,
+            municipio: municipio,
+            data_acao: dataAcao,
+            qtd_material: qtdMaterial,
+            horario: horario,
+            publico_atingido: publicoAtingido,
+            publico_alvo: publicoAlvo
+          })
+          .then(function (response) {
+            console.log('-----------');
+            console.log(response);
+            console.log('-----------');
+          })
+          .catch(function (error) {
+            console.log('erro: '+error);
+          });  
+    }
+    
+
     return(
         <View style={styles.container}>
             <TouchableOpacity 
                 onPress={()=>{
-                    console.log('Projeto: '+projeto+ '|| local: '+local+' || Municipio: '+municipio+ "|| Data: "+dataAcao+" || horario: "+horario+ "|| publico atingido: "+publicoAtingido+ "|| qtd material: "+qtdMaterial+" || publico alvo: "+publicoAlvo);
-                    console.log(coordenador);
+                    //testLog();
+                    adicionarAcao();
                 }}
                 style={styles.btn}
             >
@@ -32,7 +67,9 @@ export default function CadastrarBtn({
 const styles = StyleSheet.create({
     container:{
         marginTop:RFValue(50),
+        marginBottom:RFValue(20), 
         width:RFValue(300),
+
     },
     btn:{
         backgroundColor:'#2C8EC6',

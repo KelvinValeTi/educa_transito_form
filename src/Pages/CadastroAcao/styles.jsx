@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         width:"100%",
         backgroundColor: "#23252B",
         alignItems:'center',
-        paddingTop:RFValue(20)
+        paddingTop:RFValue(20),
     },
     title:{
         color:"#FFFFFF",
