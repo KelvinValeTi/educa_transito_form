@@ -18,6 +18,7 @@ export default function CadastrarBtn({
     const coordenador = myUser.name;
 
     const {minhasAcoes}= useContext(AuthContext);
+    const {setAcaoAtual} = useContext(AuthContext);
     
     //tests logs
     function testLog(){
@@ -40,9 +41,8 @@ export default function CadastrarBtn({
             publico_alvo: publicoAlvo
           })
           .then(function (response) {
-            console.log('-----------');
-            console.log(response);
-            console.log('-----------');
+            setAcaoAtual(response.data);
+            navigation.navigate('DashboardAcao', {backBtnVisible: false})
           })
           .catch(function (error) {
             console.log('erro: '+error);

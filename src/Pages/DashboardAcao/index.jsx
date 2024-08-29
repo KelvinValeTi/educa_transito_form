@@ -8,11 +8,10 @@ import AcaoInfoBox from "../../Components/DashboardAcao/AcaoInfoBox";
 import BtnOptions from "../../Components/DashboardAcao/BtnOptions";
 
 
-export default function DashboardAcao({navigation}){
+export default function DashboardAcao({navigation, route}){
 
   const {isConnectedAcoes, setIsConnectedAcoes} = useContext(AuthContext);  
-  const backBtnVisible = true;
-
+  console.log(route.params.backBtnVisible);
   /**
    * prevenindo que o usuário use o botão do android para voltar (POG)
    * 
@@ -36,7 +35,7 @@ export default function DashboardAcao({navigation}){
     <View style={styles.container}>
 
       {
-        backBtnVisible? //só é visivel se vier de DashBoardUser
+        route.params.backBtnVisible? //só é visivel se vier de DashBoardUser
           <VoltarBtn navigation={navigation} />
           :
           <></>
