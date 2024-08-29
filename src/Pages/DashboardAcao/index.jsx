@@ -6,12 +6,13 @@ import styles from "./styles";
 import VoltarBtn from "../../Components/VoltarBtn";
 import AcaoInfoBox from "../../Components/DashboardAcao/AcaoInfoBox";
 import BtnOptions from "../../Components/DashboardAcao/BtnOptions";
+import VoltarParaDashboardAcao from "../../Components/DashboardAcao/VoltarParaDashboardAcao";
 
 
 export default function DashboardAcao({navigation, route}){
 
   const {isConnectedAcoes, setIsConnectedAcoes} = useContext(AuthContext);  
-  console.log(route.params.backBtnVisible);
+  console.log(route.params.voltaDuasStacks);
   /**
    * prevenindo que o usuário use o botão do android para voltar (POG)
    * 
@@ -34,12 +35,8 @@ export default function DashboardAcao({navigation, route}){
   return(
     <View style={styles.container}>
 
-      {
-        route.params.backBtnVisible? //só é visivel se vier de DashBoardUser
-          <VoltarBtn navigation={navigation} />
-          :
-          <></>
-      }
+        <VoltarBtn navigation={navigation} voltaDuasStacks={route.params.voltaDuasStacks} />
+       
         <AcaoInfoBox />
 
         <BtnOptions 
@@ -65,7 +62,7 @@ export default function DashboardAcao({navigation, route}){
         <BtnOptions 
             title={'Fotos'}
             isEmpty={true}
-        />  
+        />          
 
     </View>
             

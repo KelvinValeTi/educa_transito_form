@@ -42,7 +42,7 @@ export default function CadastrarBtn({
           })
           .then(function (response) {
             setAcaoAtual(response.data);
-            navigation.navigate('DashboardAcao', {backBtnVisible: false})
+            navigation.navigate('DashboardAcao', {voltaDuasStacks: false})
           })
           .catch(function (error) {
             console.log('erro: '+error);

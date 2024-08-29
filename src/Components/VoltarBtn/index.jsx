@@ -1,14 +1,23 @@
 import React from "react";
 import { Text, TouchableOpacity, StyleSheet, Image} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
+import { StackActions } from '@react-navigation/native';
 
 
-export default function VoltarBtn({navigation}){
+export default function VoltarBtn({navigation, voltaDuasStacks}){
     
     return(
         <TouchableOpacity 
             style ={styles.voltarBtn}
-            onPress={()=>navigation.goBack()}
+            onPress={()=>{
+                        if(voltaDuasStacks){
+                            navigation.goBack();                            
+                        }else{
+                            const popAction = StackActions.pop(2);
+                            navigation.dispatch(popAction);
+                        }
+                    }
+                }
         >
             <Image 
                 style ={styles.icon}
