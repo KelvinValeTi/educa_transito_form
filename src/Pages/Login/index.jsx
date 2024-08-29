@@ -1,12 +1,14 @@
 import React, {useContext, useState} from "react";
-import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, TextInput } from "react-native";
 import { AuthContext } from "../../Contexts/DataProvider";
 
 import styles from "./styles";
 
-import LoginBtn from "../../Components/LoginBtn";
-import ForgetPasswordBtn from "../../Components/ForgetPasswordBtn";
-import LoadingDatabaseUsers from "../../Components/LoadingDatabaseUsers";
+//components
+import LoginBtn from '../../Components/LoginPage/LoginBtn'
+import ForgetPasswordBtn from "../../Components/LoginPage/ForgetPasswordBtn";
+
+import LoadingDatabaseUsers from "../../Components/Loadings/LoadingDatabaseUsers";
 
 export default function Login({navigation}){
     

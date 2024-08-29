@@ -1,13 +1,13 @@
 import React, {useContext} from "react";
 import { Text, TouchableOpacity, StyleSheet, Alert} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { AuthContext } from "../../Contexts/DataProvider";
+import { AuthContext } from '../../../Contexts/DataProvider';
 
 
 export default function LoginBtn({user, password, navigation}){
     
     const {databaseUsers, setDatabaseUsers} = useContext(AuthContext);
-    const {myUser, setMyUser} = useContext(AuthContext);
+    const {setMyUser} = useContext(AuthContext);
     const {setIsConnectedAcoes} = useContext(AuthContext);
 
     //function isValid

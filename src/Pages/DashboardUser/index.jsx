@@ -1,17 +1,19 @@
 import React, {useContext} from "react";
-import { View, Text, Alert, BackHandler} from "react-native";
+import { View, Text, BackHandler} from "react-native";
 import { AuthContext } from "../../Contexts/DataProvider";
 import styles from "./stylesDashboardUser";
 
-import UserInfoBox from "../../Components/UserInfoBox";
-import ActionsBoxDashboardUser from "../../Components/ActionsBoxDashboardUser";
-import UltimasAcoes from "../../Components/UltimasAcoes";
-import LoadingDatabaseAcoes from "../../Components/LoadingDatabaseAcoes";
+//components
+import UserInfoBox from "../../Components/DashboardUserPage/UserInfoBox";
+import ActionsBoxDashboardUser from "../../Components/DashboardUserPage/ActionsBoxDashboardUser";
+import UltimasAcoes from "../../Components/DashboardUserPage/UltimasAcoes";
+
+import LoadingDatabaseAcoes from "../../Components/Loadings/LoadingDatabaseAcoes";
 
 
 export default function DashboardUser({navigation}){
 
-  const {isConnectedAcoes, setIsConnectedAcoes} = useContext(AuthContext);
+  const {isConnectedAcoes} = useContext(AuthContext);
   
   /**
    * prevenindo que o usuário use o botão do android para voltar (POG)

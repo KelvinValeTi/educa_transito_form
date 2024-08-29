@@ -13,11 +13,12 @@ export default function AtualizarAcaoBtn({
     navigation, id
     }
 ){
-    console.log(`/acao/${id}`);
     const {myUser} = useContext(AuthContext); //myUser.name é o nome do coordenador
+    const {setIsConnectedAcoes} = useContext(AuthContext);
+
     const coordenador = myUser.name;
 
-    const {setAcaoAtual} = useContext(AuthContext);
+    const {acaoAtual, setAcaoAtual} = useContext(AuthContext);
 
     function atualizarAcao(){
         api.put(`/acao/${id}`, {
@@ -32,8 +33,8 @@ export default function AtualizarAcaoBtn({
             publico_alvo: publicoAlvo
           })
           .then(function (response) {
-            setAcaoAtual(response.data);
-            console.log('deu certo');
+            //console.log(response);
+            setIsConnectedAcoes(false);
             navigation.navigate('DashboardAcao', {voltaDuasStacks: false})
           })
           .catch(function (error) {

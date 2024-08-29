@@ -1,15 +1,19 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Text, TouchableOpacity, StyleSheet, Image} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { StackActions } from '@react-navigation/native';
+import { AuthContext } from "../../Contexts/DataProvider";
 
 
 export default function VoltarBtn({navigation, voltaDuasStacks}){
     
+    const {setIsConnectedAcoes} = useContext(AuthContext);
+
     return(
         <TouchableOpacity 
             style ={styles.voltarBtn}
             onPress={()=>{
+                        setIsConnectedAcoes(false); //forçar o reload das ações
                         if(voltaDuasStacks){
                             const popAction = StackActions.pop(2);
                             navigation.dispatch(popAction);                            

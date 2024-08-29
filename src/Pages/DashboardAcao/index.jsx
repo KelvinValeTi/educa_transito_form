@@ -7,16 +7,21 @@ import VoltarBtn from "../../Components/VoltarBtn";
 import AcaoInfoBox from "../../Components/DashboardAcao/AcaoInfoBox";
 import BtnOptions from "../../Components/DashboardAcao/BtnOptions";
 
+import ReloadingAcaoAtual from "../../Components/Loadings/ReloadingAcaoAtual";
+
 
 export default function DashboardAcao({navigation, route}){
 
-  const {isConnectedAcoes, setIsConnectedAcoes} = useContext(AuthContext);  
-  console.log(route.params.voltaDuasStacks);
+  const {acaoAtual} = useContext(AuthContext);
+  const {isConnectedAcoes} = useContext(AuthContext);
+  
   /**
    * prevenindo que o usuário use o botão do android para voltar (POG)
    * 
    * enquanto o react navigation não atualiza o gestureEnabled que só está funcionando em iOS
    */
+  //console.log(acaoAtual);
+
   React.useEffect(() => {
     const onBackPress = () => {
       return true; 
@@ -31,12 +36,23 @@ export default function DashboardAcao({navigation, route}){
   }, []);
   // fim do gestureEnabled improvisado da documentação do react navigation
 
+
+  /**um loading ação bem aqui*/
+
   return(
-    <View style={styles.container}>
+    <>
+    {
+      !isConnectedAcoes?
+      <ReloadingAcaoAtual 
+        id={acaoAtual._id}
+      />
+      :
+      <View style={styles.container}>
 
         <VoltarBtn 
-          navigation={navigation} 
+          navigation={navigation}
           voltaDuasStacks={route.params.voltaDuasStacks} 
+          acaoAtual={{acaoAtual}}
         />
        
         <AcaoInfoBox />
@@ -72,7 +88,9 @@ export default function DashboardAcao({navigation, route}){
         />          
 
     </View>
-            
+
+    }    
+    </>
   );
 }
 

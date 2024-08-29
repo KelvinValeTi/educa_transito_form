@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import { View, Text, TouchableOpacity, Image} from "react-native";
-import { AuthContext } from "../../Contexts/DataProvider";
+import { AuthContext } from '../../../Contexts/DataProvider';
 
 import styles from "./styles";
 
@@ -19,7 +19,7 @@ export default function ActionsBoxDashboardUser({navigation}){
                 >
                     <Image
                         style={styles.icon} 
-                        source={require('../../assets/add_icon.png')} 
+                        source={require('../../../assets/add_icon.png')} 
                     />
                     <Text style={styles.description}>Nova Ação</Text>
                 </TouchableOpacity>
@@ -34,7 +34,7 @@ export default function ActionsBoxDashboardUser({navigation}){
                 >
                     <Image
                         style={styles.icon} 
-                        source={require('../../assets/sair_icon.png')}
+                        source={require('../../../assets/sair_icon.png')}
                     />
                     <Text style={styles.description}>Sair/ Logout</Text>
                 </TouchableOpacity>

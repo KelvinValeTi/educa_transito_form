@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import {Text, TouchableOpacity, FlatList} from "react-native";
 
 import styles from "./styles";
-import { AuthContext } from "../../Contexts/DataProvider";
+import { AuthContext } from '../../../Contexts/DataProvider';
 
 //component thumbnail da operação
 const Acao = ({navigation, acaoAtual, setAcaoAtual}) => (

@@ -1,10 +1,10 @@
 import React, {useContext, useState} from "react";
 import { View, StyleSheet, Text, BackHandler, TouchableOpacity} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { AuthContext } from "../../Contexts/DataProvider";
+import { AuthContext } from "../../../Contexts/DataProvider";
 
 //conectando a api de usuarios no banco de dados
-import api from '../../ConnectApi';
+import api from '../../../ConnectApi';
 
 export default function LoadingDatabaseUsers(){
     

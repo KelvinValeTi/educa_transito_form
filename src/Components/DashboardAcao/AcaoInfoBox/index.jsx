@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
+import React, { useContext, useEffect } from "react";
+import {View, Text, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AuthContext } from "../../../Contexts/DataProvider";
 
 export default function AcaoInfoBox(){
 
     const {acaoAtual} = useContext(AuthContext);
-
+    
     return(
         <View style={styles.container}>
             <Text style={styles.titleProjeto}>{acaoAtual.projeto}</Text>

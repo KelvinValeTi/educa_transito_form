@@ -1,13 +1,13 @@
 import React, {useContext, useState} from "react";
 import { View, StyleSheet, Text} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { AuthContext } from "../../Contexts/DataProvider";
+import { AuthContext } from "../../../Contexts/DataProvider";
 
 //conectando a api de usuarios no banco de dados
-import api from '../../ConnectApi';
+import api from '../../../ConnectApi'
 
 //Function LoadingDatabaseAcoes
-export default function LoadingDatabaseAcoes(){
+export default function ReloadingAcaoAtual({id}){
     
     const {setIsConnectedAcoes} = useContext(AuthContext);
     const {myUser} = useContext(AuthContext);
@@ -16,7 +16,8 @@ export default function LoadingDatabaseAcoes(){
     const {databaseAcoes, setDatabaseAcoes} = useContext(AuthContext); 
     
     //apenas ações do COORDENADOR ATUAL
-    const {setMinhasAcoes} = useContext(AuthContext);
+    const {minhasAcoes, setMinhasAcoes} = useContext(AuthContext);
+    const{setAcaoAtual} = useContext(AuthContext);
 
     const [errorConnection, setErrorConnection] = useState('');
     
@@ -31,7 +32,8 @@ export default function LoadingDatabaseAcoes(){
                 //pegando os usuários do banco de dados
                 const response = await api.get("/acao");
                 setDatabaseAcoes(response.data);
-                setMinhasAcoes(armazenaAcao());
+                setMinhasAcoes(armazenaAcao()); //reload das ações do coordenador
+                setAcaoAtual(armazenaAcaoAtual(id)) //salva a ação atual (atualiza)
                 setIsConnectedAcoes(true);
             }catch(err){
                 console.error(err);
@@ -54,11 +56,24 @@ export default function LoadingDatabaseAcoes(){
         return minhasAcoes;
     }
 
+    function armazenaAcaoAtual(id){
+
+        let acaoAtual='';
+
+        for(let i=0; i<databaseAcoes.length;i++){
+            if(databaseAcoes[i]._id === id){
+                return databaseAcoes[i];
+            }
+        }
+        
+        return acaoAtual;
+    }
+
     return(
         <View style= {styles.container}>
             {
                 errorConnection===''?
-                <Text style= {styles.text}>Calma, puxando as informações do usuário</Text>
+                <Text style= {styles.text}>Calma, puxando as informações da Ação atual</Text>
                 :
                 <Text style= {styles.text}>{errorConnection}</Text>
             }
