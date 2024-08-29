@@ -1,19 +1,22 @@
 import React, { useContext } from "react";
 import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
+import { AuthContext } from "../../../Contexts/DataProvider";
 
 export default function AcaoInfoBox(){
-    
+
+    const {acaoAtual} = useContext(AuthContext);
+
     return(
         <View style={styles.container}>
-            <Text style={styles.titleProjeto}>Somos Todos Pedestres</Text>
+            <Text style={styles.titleProjeto}>{acaoAtual.projeto}</Text>
             <View style={styles.underlineDecor}/>
 
-            <Text style={styles.descricao}>Local: Av. mico leão dourado, MA-987</Text>
-            <Text style={styles.descricao}>Município: São Raimundo das Ostras</Text>
+            <Text style={styles.descricao}>Local: {acaoAtual.local}</Text>
+            <Text style={styles.descricao}>Município: {acaoAtual.municipio}</Text>
             <View style={styles.subContainer}>
-                <Text style={styles.descricao}>Data: XX/XX/XXX</Text>
-                <Text style={styles.descricao}>Horário: XX:XX</Text>
+                <Text style={styles.descricao}>Data: {acaoAtual.data_acao}</Text>
+                <Text style={styles.descricao}>Horário: {acaoAtual.horario}</Text>
             </View>
         </View>
     );

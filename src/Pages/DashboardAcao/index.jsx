@@ -11,7 +11,7 @@ import BtnOptions from "../../Components/DashboardAcao/BtnOptions";
 export default function DashboardAcao({navigation}){
 
   const {isConnectedAcoes, setIsConnectedAcoes} = useContext(AuthContext);  
-  const backBtnVisible = false;
+  const backBtnVisible = true;
 
   /**
    * prevenindo que o usuário use o botão do android para voltar (POG)

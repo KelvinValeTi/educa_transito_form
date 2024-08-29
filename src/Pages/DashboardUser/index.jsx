@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import { View, Text, Alert, BackHandler} from "react-native";
 import { AuthContext } from "../../Contexts/DataProvider";
 import styles from "./stylesDashboardUser";
@@ -50,7 +50,9 @@ export default function DashboardUser({navigation}){
             <View style={styles.underlineDecor}/>
           </View>  
 
-          <UltimasAcoes></UltimasAcoes>
+          <UltimasAcoes 
+            navigation={navigation} 
+          />
 
         </View>
             

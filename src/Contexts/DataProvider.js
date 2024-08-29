@@ -13,6 +13,7 @@ export default function DataProvider({children}){
     
     const [databaseAcoes, setDatabaseAcoes] = useState(''); //Ações de todo mundo! - para o sistema de adm
     const [minhasAcoes, setMinhasAcoes] = useState(''); //ações de apenas um usuário.
+    const [acaoAtual, setAcaoAtual] = useState(''); //ações atual.
 
     const [isConnectedUsers, setIsConnectedUsers] = useState(false);
     const [isConnectedAcoes, setIsConnectedAcoes] = useState(false);
@@ -37,6 +38,9 @@ export default function DataProvider({children}){
 
             minhasAcoes,
             setMinhasAcoes,
+
+            acaoAtual,
+            setAcaoAtual
             }}
         >
             {children}

@@ -5,19 +5,26 @@ import styles from "./styles";
 import { AuthContext } from "../../Contexts/DataProvider";
 
 //component thumbnail da operação
-const Acao = ({projeto, local, dataAcao}) => (
-    <TouchableOpacity style={styles.acaoThumbnail}>
-        <Text style={styles.projeto}>{projeto}</Text>
-        <Text style={styles.local}>Local: {local}</Text>
-        <Text style={styles.dataAcao}>Data: {dataAcao}</Text>
+const Acao = ({navigation, acaoAtual, setAcaoAtual}) => (
+    <TouchableOpacity 
+        style={styles.acaoThumbnail}
+        onPress={()=>{
+           //console.log(acaoAtual.projeto);
+           setAcaoAtual(acaoAtual);
+           navigation.navigate('DashboardAcao');
+        }}
+    >
+        <Text style={styles.projeto}>{acaoAtual.projeto}</Text>
+        <Text style={styles.local}>Local: {acaoAtual.local}</Text>
+        <Text style={styles.dataAcao}>Data: {acaoAtual.data_acao}</Text>
     </TouchableOpacity>
 );
 //fim da thumbnail da operação
 
-export default function UltimasAcoes(){
+export default function UltimasAcoes({navigation}){
    
     const {minhasAcoes} = useContext(AuthContext);
-
+    const {setAcaoAtual} = useContext(AuthContext);
     //ordenar este vetor por data depois.
     
     return(
@@ -25,9 +32,9 @@ export default function UltimasAcoes(){
             data={minhasAcoes}
             renderItem={({item}) => 
                 <Acao 
-                    projeto={item.projeto}
-                    local ={item.local}
-                    dataAcao={item.data_acao} 
+                    navigation={navigation}
+                    acaoAtual = {item}
+                    setAcaoAtual={setAcaoAtual}
                 />
             }
                 keyExtractor={item => item._id} 
