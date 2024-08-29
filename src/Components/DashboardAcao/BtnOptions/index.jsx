@@ -2,12 +2,13 @@ import React from "react";
 import {Text, TouchableOpacity, StyleSheet, Alert} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
-export default function BtnOptions({title, isEmpty}){
+export default function BtnOptions({title, isEmpty, navigation}){
     
     function btnPressed(){
         switch(title){
             case "Editar dados obrigatorios":
                 console.log('Editar dados obrigatorios')
+                navigation.navigate('UpdateAcao');
                 break;
             case "Frequência":
                 console.log('Frequência')

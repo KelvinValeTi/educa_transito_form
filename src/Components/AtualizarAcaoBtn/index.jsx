@@ -1,35 +1,26 @@
 import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { AuthContext } from "../../../Contexts/DataProvider";
+import { AuthContext } from "../../Contexts/DataProvider";
 
-import api from "../../../ConnectApi";
+import api from '../../ConnectApi/index';
 
-export default function CadastrarBtn({
+export default function AtualizarAcaoBtn({
     projeto, local, 
     municipio, dataAcao,
     horario, publicoAtingido,
     qtdMaterial, publicoAlvo,
-    navigation
+    navigation, id
     }
 ){
-
+    console.log(`/acao/${id}`);
     const {myUser} = useContext(AuthContext); //myUser.name é o nome do coordenador
     const coordenador = myUser.name;
 
-    const {minhasAcoes}= useContext(AuthContext);
     const {setAcaoAtual} = useContext(AuthContext);
-    
-    //tests logs
-    function testLog(){
-        console.log('Projeto: '+projeto+ '|| local: '+local+' || Municipio: '+municipio+ "|| Data: "+dataAcao+" || horario: "+horario+ "|| publico atingido: "+publicoAtingido+ "|| qtd material: "+qtdMaterial+" || publico alvo: "+publicoAlvo);
-        console.log(coordenador);
-        console.log('---------------');
-        console.log(minhasAcoes);
-    }
 
-    function adicionarAcao(){
-        api.post('/acao', {
+    function atualizarAcao(){
+        api.put(`/acao/${id}`, {
             coordenador: coordenador,
             projeto: projeto,
             local: local,
@@ -42,7 +33,8 @@ export default function CadastrarBtn({
           })
           .then(function (response) {
             setAcaoAtual(response.data);
-            navigation.navigate('DashboardAcao', {voltaDuasStacks: true})
+            console.log('deu certo');
+            navigation.navigate('DashboardAcao', {voltaDuasStacks: false})
           })
           .catch(function (error) {
             console.log('erro: '+error);
@@ -54,12 +46,11 @@ export default function CadastrarBtn({
         <View style={styles.container}>
             <TouchableOpacity 
                 onPress={()=>{
-                    //testLog();
-                    adicionarAcao();
+                    atualizarAcao();
                 }}
                 style={styles.btn}
             >
-                <Text style={styles.text}>Cadastrar</Text>
+                <Text style={styles.text}>Atualizar dados</Text>
             </TouchableOpacity>
         </View>
     );

@@ -1,7 +1,6 @@
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// Only import react-native-gesture-handler on native platforms
 import 'react-native-gesture-handler';
 
 import Login from "../Pages/Login";
@@ -9,6 +8,7 @@ import DashboardUser from "../Pages/DashboardUser";
 import RecoveryPassword from "../Pages/RecoveryPassword";
 import CadastroAcao from "../Pages/CadastroAcao";
 import DashboardAcao from "../Pages/DashboardAcao";
+import UpdateAcao from "../Pages/UpdateAcao";
 
 import DataProvider from "../Contexts/DataProvider";
 
@@ -29,6 +29,7 @@ export default function Routes(){
                     <Stack.Screen name="DashboardUser" component={DashboardUser}/>
                     <Stack.Screen name="CadastroAcao" component={CadastroAcao}/>
                     <Stack.Screen name="DashboardAcao" component={DashboardAcao}/>
+                    <Stack.Screen name="UpdateAcao" component={UpdateAcao}/>
                 </Stack.Navigator>
             </DataProvider>
         </NavigationContainer>

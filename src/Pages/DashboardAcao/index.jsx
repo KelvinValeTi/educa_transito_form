@@ -6,7 +6,6 @@ import styles from "./styles";
 import VoltarBtn from "../../Components/VoltarBtn";
 import AcaoInfoBox from "../../Components/DashboardAcao/AcaoInfoBox";
 import BtnOptions from "../../Components/DashboardAcao/BtnOptions";
-import VoltarParaDashboardAcao from "../../Components/DashboardAcao/VoltarParaDashboardAcao";
 
 
 export default function DashboardAcao({navigation, route}){
@@ -35,33 +34,41 @@ export default function DashboardAcao({navigation, route}){
   return(
     <View style={styles.container}>
 
-        <VoltarBtn navigation={navigation} voltaDuasStacks={route.params.voltaDuasStacks} />
+        <VoltarBtn 
+          navigation={navigation} 
+          voltaDuasStacks={route.params.voltaDuasStacks} 
+        />
        
         <AcaoInfoBox />
 
         <BtnOptions 
             title={'Editar dados obrigatorios'}
             isEmpty={false}
+            navigation={navigation}
         /> 
         
         <BtnOptions 
             title={'Frequência'}
             isEmpty={true}
+            navigation={navigation}
         />  
 
         <BtnOptions 
             title={'Parceiros'}
             isEmpty={true}
+            navigation={navigation}
         />   
         
         <BtnOptions 
             title={'Observações'}
             isEmpty={true}
+            navigation={navigation}
         />  
 
         <BtnOptions 
             title={'Fotos'}
             isEmpty={true}
+            navigation={navigation}
         />          
 
     </View>

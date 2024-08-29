@@ -11,10 +11,10 @@ export default function VoltarBtn({navigation, voltaDuasStacks}){
             style ={styles.voltarBtn}
             onPress={()=>{
                         if(voltaDuasStacks){
-                            navigation.goBack();                            
-                        }else{
                             const popAction = StackActions.pop(2);
-                            navigation.dispatch(popAction);
+                            navigation.dispatch(popAction);                            
+                        }else{
+                            navigation.goBack();
                         }
                     }
                 }

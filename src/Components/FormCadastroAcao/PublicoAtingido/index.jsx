@@ -3,15 +3,15 @@ import { View, Text, TextInput, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 
-export default function PublicoAtingido({PublicoAtingido, setPublicoAtingido}){
-    
+export default function PublicoAtingido({publicoAtingido, setPublicoAtingido}){
+
     return(
         <View style={styles.container}>
             <Text style={styles.label}>Público{'\n'}atingido:</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={setPublicoAtingido}
-                value={PublicoAtingido}
+                value={publicoAtingido}
                 keyboardType="numeric"
                 placeholder="ex: 150"
                 placeholderTextColor="#bebebe"

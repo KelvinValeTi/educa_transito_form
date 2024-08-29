@@ -11,7 +11,7 @@ const Acao = ({navigation, acaoAtual, setAcaoAtual}) => (
         onPress={()=>{
            //console.log(acaoAtual.projeto);
            setAcaoAtual(acaoAtual);
-           navigation.navigate('DashboardAcao', {voltaDuasStacks:true});
+           navigation.navigate('DashboardAcao', {voltaDuasStacks:false});
         }}
     >
         <Text style={styles.projeto}>{acaoAtual.projeto}</Text>

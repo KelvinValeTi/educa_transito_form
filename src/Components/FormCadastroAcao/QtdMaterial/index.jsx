@@ -4,7 +4,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 
 export default function QtdMaterial({qtdMaterial, setQtdMaterial}){
-    
+
     return(
         <View style={styles.container}>
             <Text style={styles.label}>Quantidade{"\n"}Material:</Text>

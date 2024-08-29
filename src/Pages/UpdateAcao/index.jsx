@@ -1,6 +1,7 @@
-import React, {useState} from "react";
-import { View, Text, ScrollView, TouchableOpacity} from "react-native";
+import React, {useState, useContext} from "react";
+import { View, Text, TouchableOpacity} from "react-native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { AuthContext } from "../../Contexts/DataProvider";
 
 import styles from "./styles";
 
@@ -15,21 +16,24 @@ import PublicoAtingido from "../../Components/FormCadastroAcao/PublicoAtingido";
 import QtdMaterial from "../../Components/FormCadastroAcao/QtdMaterial";
 import PublicoAlvo from "../../Components/FormCadastroAcao/PublicoAlvo";
 
-import CadastrarBtn from "../../Components/FormCadastroAcao/CadastrarBtn";
+import AtualizarAcaoBtn from "../../Components/AtualizarAcaoBtn";
+
 
 //function CadastroAcao
-export default function CadastroAcao({navigation}){
+export default function UpdateAcao({navigation}){
+
+    const {acaoAtual} = useContext(AuthContext);
     
     const [openProjeto, setOpenProjeto] = useState(false);
     
-    const [projeto, setProjeto] = useState('Escolha um projeto');
-    const [local, setLocal] = useState('');
-    const [municipio, setMunicipio] = useState('');
-    const [dataAcao, setDataAcao] = useState('');
-    const [horario, setHorario] = useState('');
-    const [publicoAtingido, setPublicoAtingido] = useState('');
-    const [qtdMaterial, setQtdMaterial] = useState('');
-    const [publicoAlvo, setPublicoAlvo] = useState('');
+    const [projeto, setProjeto] = useState(acaoAtual.projeto);
+    const [local, setLocal] = useState(acaoAtual.local);
+    const [municipio, setMunicipio] = useState(acaoAtual.municipio);
+    const [dataAcao, setDataAcao] = useState(acaoAtual.data_acao);
+    const [horario, setHorario] = useState(acaoAtual.horario);
+    const [publicoAtingido, setPublicoAtingido] = useState(String(acaoAtual.publico_atingido)); 
+    const [qtdMaterial, setQtdMaterial] = useState(String(acaoAtual.qtd_material));
+    const [publicoAlvo, setPublicoAlvo] = useState(acaoAtual.publico_alvo);
 
     return(
         <View
@@ -44,10 +48,9 @@ export default function CadastroAcao({navigation}){
             <KeyboardAwareScrollView>
                 <VoltarBtn 
                     navigation={navigation}
-                    voltaDuasStacks={false}
                 /> 
             
-                <Text style={styles.title}>Cadastro de Ação</Text>
+                <Text style={styles.title}>Editar Ação</Text>
 
                 {/**projeto btn */}
                 <Text style={styles.label}>Selecione o projeto: </Text>
@@ -97,7 +100,7 @@ export default function CadastroAcao({navigation}){
                     setPublicoAlvo={setPublicoAlvo}
                 />
 
-                <CadastrarBtn 
+                <AtualizarAcaoBtn 
                     projeto={projeto}
                     local ={local}
                     municipio={municipio}
@@ -107,6 +110,7 @@ export default function CadastroAcao({navigation}){
                     qtdMaterial={qtdMaterial}
                     publicoAlvo={publicoAlvo}
                     navigation={navigation}
+                    id={acaoAtual._id}
                 />
             </KeyboardAwareScrollView>
         }
