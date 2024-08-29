@@ -21,7 +21,7 @@ export default function AcaoInfoBox(){
 
 const styles = StyleSheet.create({
     container:{
-        marginTop: RFValue(20),
+        marginTop: RFValue(30),
         marginBottom: RFValue(40),
         backgroundColor:'#C6632C',
         width:RFValue(300),

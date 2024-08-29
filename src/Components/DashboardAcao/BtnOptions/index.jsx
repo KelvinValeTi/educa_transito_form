@@ -1,11 +1,40 @@
 import React from "react";
-import {Text, TouchableOpacity, StyleSheet} from "react-native";
+import {Text, TouchableOpacity, StyleSheet, Alert} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 export default function BtnOptions({title, isEmpty}){
     
+    function btnPressed(){
+        switch(title){
+            case "Editar dados obrigatorios":
+                console.log('Editar dados obrigatorios')
+                break;
+            case "Frequência":
+                console.log('Frequência')
+                break;
+            case "Parceiros":
+                console.log('Parceiros')
+                break;
+            case "Observações":
+                console.log('Observações')
+                break;
+            case "Fotos":
+                Alert.alert('Atenção!','Função ainda não implementada',[
+                    {text:'Entendi'}
+                ]);
+                break;
+            default:
+                console.log('verificar variavel title')       
+        }
+    }
+
     return(
-        <TouchableOpacity style={styles.btn(isEmpty)}>
+        <TouchableOpacity 
+            style={styles.btn(isEmpty)}
+            onPress={()=>{
+                btnPressed();
+            }}    
+        >
             <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>
     );
