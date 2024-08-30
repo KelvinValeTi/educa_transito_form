@@ -19,11 +19,6 @@ export default function BtnOptions({title, isEmpty, navigation}){
             case "Observações":
                 console.log('Observações')
                 break;
-            case "Fotos":
-                Alert.alert('Atenção!','Função ainda não implementada',[
-                    {text:'Entendi'}
-                ]);
-                break;
             default:
                 console.log('verificar variavel title')       
         }

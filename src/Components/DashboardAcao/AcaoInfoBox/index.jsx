@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import {View, Text, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { AuthContext } from "../../../Contexts/DataProvider";
@@ -18,14 +18,20 @@ export default function AcaoInfoBox(){
                 <Text style={styles.descricao}>Data: {acaoAtual.data_acao}</Text>
                 <Text style={styles.descricao}>Horário: {acaoAtual.horario}</Text>
             </View>
+
+            <View style={styles.underlineDecor}/>
+            <Text style={styles.descricao}>Público atingido: {acaoAtual.publico_atingido}</Text>
+            <Text style={styles.descricao}>Quantidade de Material: {acaoAtual.qtd_material}</Text>
+            <Text style={styles.descricao}>Público Alvo: {acaoAtual.publico_alvo}</Text>
+            
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container:{
-        marginTop: RFValue(30),
-        marginBottom: RFValue(40),
+        marginTop: RFValue(10),
+        marginBottom: RFValue(20),
         backgroundColor:'#C6632C',
         width:RFValue(300),
         borderRadius:RFValue(24),

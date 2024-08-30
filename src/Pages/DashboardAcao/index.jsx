@@ -1,11 +1,12 @@
-import React, {useContext, useEffect} from "react";
-import { View, Text, Alert, BackHandler} from "react-native";
+import React, {useContext} from "react";
+import { View, BackHandler, ScrollView} from "react-native";
 import { AuthContext } from "../../Contexts/DataProvider";
 import styles from "./styles";
 
 import VoltarBtn from "../../Components/VoltarBtn";
 import AcaoInfoBox from "../../Components/DashboardAcao/AcaoInfoBox";
 import BtnOptions from "../../Components/DashboardAcao/BtnOptions";
+import GerarRelatorioBtn from "../../Components/DashboardAcao/GerarRelatorioBtn";
 
 import ReloadingAcaoAtual from "../../Components/Loadings/ReloadingAcaoAtual";
 
@@ -54,38 +55,39 @@ export default function DashboardAcao({navigation, route}){
           voltaDuasStacks={route.params.voltaDuasStacks} 
           acaoAtual={{acaoAtual}}
         />
-       
+
+      <ScrollView>
+
         <AcaoInfoBox />
 
         <BtnOptions 
-            title={'Editar dados obrigatorios'}
-            isEmpty={false}
-            navigation={navigation}
+          title={'Editar dados obrigatorios'}
+          isEmpty={false}
+          navigation={navigation}
         /> 
         
         <BtnOptions 
-            title={'Frequência'}
-            isEmpty={true}
-            navigation={navigation}
+          title={'Frequência'}
+          isEmpty={true}
+          navigation={navigation}
         />  
 
         <BtnOptions 
-            title={'Parceiros'}
-            isEmpty={true}
-            navigation={navigation}
+          title={'Parceiros'}
+          isEmpty={true}
+          navigation={navigation}
         />   
         
         <BtnOptions 
-            title={'Observações'}
-            isEmpty={true}
-            navigation={navigation}
-        />  
+          title={'Observações'}
+          isEmpty={true}
+          navigation={navigation}
+        />        
 
-        <BtnOptions 
-            title={'Fotos'}
-            isEmpty={true}
-            navigation={navigation}
-        />          
+        <GerarRelatorioBtn 
+          navigation={navigation}
+        />
+      </ScrollView>
 
     </View>
 
