@@ -17,7 +17,7 @@ export default function ListaParceirosFrequencia({label, dataArray, setDataArray
     function excluirParceiro(parceiro){
        
         const index = dataArray.indexOf(parceiro)
-        console.log(index)
+        
         if(index>-1){
             dataArray.splice(index, 1);
             setDataArray(dataArray);

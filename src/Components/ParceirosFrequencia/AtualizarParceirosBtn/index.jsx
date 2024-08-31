@@ -2,15 +2,31 @@ import React from "react";
 import {Text, TouchableOpacity, StyleSheet, Alert} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
-export default function AtualizarParceirosBtn({navigation, dataArray}){
-   
+import api from "../../../ConnectApi";
+
+export default function AtualizarParceirosBtn({navigation, dataArray, id}){
+
+    function atualizar(){
+        console.log('entrou em atualizar');
+
+        api.put(`/acao/${id}`, {
+            parceiros:dataArray
+          })
+          .then(function (response) {
+            console.log(response);
+            //setIsConnectedAcoes(false);
+            navigation.goBack();
+          })
+          .catch(function (error) {
+            console.log('erro: '+error);
+          });  
+    }
+
     return(
         <TouchableOpacity 
             style={styles.btn}
             onPress={()=>{
-                //console.log('Atualizar Parceiros');
-                //console.log(parceiros)
-                 console.log(dataArray)
+                 atualizar();
             }}    
         >
             <Text style={styles.title}>Atualizar</Text>

@@ -14,7 +14,8 @@ export default function BtnOptions({title, isEmpty, navigation}){
                 console.log('Frequência')
                 break;
             case "Parceiros":
-                console.log('Parceiros')
+                console.log('Parceiros');
+                navigation.navigate('Parceiros');
                 break;
             case "Observações":
                 console.log('Observações')

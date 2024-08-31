@@ -49,6 +49,7 @@ export default function Parceiros({navigation}){
             <AtualizarParceirosBtn
                 navigation={navigation}
                 dataArray={parceiros} //por alguma razão os nomes das props da mesma pagina precisam ser iguais
+                id = {acaoAtual._id}
             />
 
         </View>
