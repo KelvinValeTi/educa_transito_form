@@ -6,6 +6,8 @@ import styles from "./styles";
 
 import InputParceiroFrequencia from "../../Components/ParceirosFrequencia/InputParceiroFrequencia";
 import ListaParceirosFrequencia from "../../Components/ParceirosFrequencia/ListaParceirosFrequencia";
+import AtualizarParceirosBtn from "../../Components/ParceirosFrequencia/AtualizarParceirosBtn";
+
 import VoltarBtn from "../../Components/VoltarBtn";
 
 //function Parceiros
@@ -15,7 +17,7 @@ export default function Parceiros({navigation}){
     //fazer um useState para atualizar dinamicamente esta pagina
 
     //dados para teste
-    const [parceiros, setParceiros] = useState(["Auto escola João de Barro", "Policia Militar", "Secretária da Mulher"]);
+    const [parceiros, setParceiros] = useState(["Auto escola João de Barro", "Policia Militar", "Secretária da Mulher","Auto escola João de Barro","Auto escola João de Barro", "Auto escola João de Barro"]);
 
     return(
         <View
@@ -38,7 +40,10 @@ export default function Parceiros({navigation}){
                 parceiros = {parceiros}
             />
 
+            <AtualizarParceirosBtn 
+                navigation={navigation}
 
+            />
 
         </View>
     );

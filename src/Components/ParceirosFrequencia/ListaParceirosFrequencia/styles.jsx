@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
     parceiroText:{
         width:RFValue(230),
         fontFamily:'Inter_600SemiBold',
-        fontSize:RFValue(20),
+        fontSize:RFValue(18),
     },
     excluirIcon:{
-        width:RFValue(30),
-        height:RFValue(30),
+        width:RFValue(25),
+        height:RFValue(25),
     }
 
 
