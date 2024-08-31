@@ -19,7 +19,7 @@ import PublicoAlvo from "../../Components/FormCadastroAcao/PublicoAlvo";
 import AtualizarAcaoBtn from "../../Components/AtualizarAcaoBtn";
 
 
-//function CadastroAcao
+//function UpdateAcao
 export default function UpdateAcao({navigation}){
 
     const {acaoAtual} = useContext(AuthContext);
