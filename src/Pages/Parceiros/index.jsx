@@ -43,12 +43,10 @@ export default function Parceiros({navigation}){
             <ListaParceirosFrequencia 
                 label={'Parceiros Atuais'}
                 dataArray = {parceiros}
-                
-                isRefreshing = {isRefreshing}
-                setIsRefreshing ={setIsRefreshing}
+                setDataArray = {setParceiros}
             />
 
-            <AtualizarParceirosBtn 
+            <AtualizarParceirosBtn
                 navigation={navigation}
                 dataArray={parceiros} //por alguma razão os nomes das props da mesma pagina precisam ser iguais
             />

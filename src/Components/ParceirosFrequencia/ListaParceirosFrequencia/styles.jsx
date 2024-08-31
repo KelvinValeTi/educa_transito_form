@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     lista:{
         width:RFValue(300),
         height:RFValue(300),
-        borderRadius:RFValue(24),
-        padding:RFValue(15),
+        borderRadius:RFValue(10),
+        paddingHorizontal:RFValue(15),
         backgroundColor:'#FFFFFF',
     },
 

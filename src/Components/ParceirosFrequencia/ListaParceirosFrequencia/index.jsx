@@ -4,7 +4,7 @@ import { RefreshControl } from 'react-native';
 
 import styles from "./styles";
 
-export default function ListaParceirosFrequencia({label, dataArray}){
+export default function ListaParceirosFrequencia({label, dataArray, setDataArray}){
 
     const DATA=[{
         id:1,
@@ -14,12 +14,29 @@ export default function ListaParceirosFrequencia({label, dataArray}){
 
     const [isRefreshing, setIsRefreshing] = useState(false);
     
+    function excluirParceiro(parceiro){
+       
+        const index = dataArray.indexOf(parceiro)
+        console.log(index)
+        if(index>-1){
+            dataArray.splice(index, 1);
+            setDataArray(dataArray);
+
+            setIsRefreshing(true);
+            setTimeout(()=>{
+                setIsRefreshing(false);
+            },500);
+        }
+    }
+
+
+
     return(
         <View style={styles.container}>
             <Text style={styles.label}>{label}:</Text>
             <SectionList
                 style={styles.lista}
-                refreshControl={isRefreshing}
+                refreshing={isRefreshing}
 
                 sections={DATA}
                 keyExtractor={(item, index) => item +index}
@@ -27,7 +44,7 @@ export default function ListaParceirosFrequencia({label, dataArray}){
                     <View style={styles.parceiro}>
                         <Text style={styles.parceiroText}>{item}</Text>
                         <TouchableOpacity 
-                            onPress={()=>{console.log('trash icon ' +item)}}    
+                            onPress={()=>{excluirParceiro(item)}}    
                         >
                             <Image 
                                 style={styles.excluirIcon}
