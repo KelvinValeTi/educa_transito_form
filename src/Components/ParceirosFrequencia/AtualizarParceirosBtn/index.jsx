@@ -2,13 +2,15 @@ import React from "react";
 import {Text, TouchableOpacity, StyleSheet, Alert} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
-export default function AtualizarParceirosBtn({navigation}){
-    
+export default function AtualizarParceirosBtn({navigation, dataArray}){
+   
     return(
         <TouchableOpacity 
             style={styles.btn}
             onPress={()=>{
-                console.log('Atualizar Parceiros');
+                //console.log('Atualizar Parceiros');
+                //console.log(parceiros)
+                 console.log(dataArray)
             }}    
         >
             <Text style={styles.title}>Atualizar</Text>

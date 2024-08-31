@@ -14,10 +14,12 @@ import VoltarBtn from "../../Components/VoltarBtn";
 export default function Parceiros({navigation}){
 
     const {acaoAtual} = useContext(AuthContext);
-    //fazer um useState para atualizar dinamicamente esta pagina
+
+    //variavel que controla o refresh da flatlist
+    const [isRefreshing, setIsRefreshing] = useState(false);
 
     //dados para teste
-    const [parceiros, setParceiros] = useState(["Auto escola João de Barro", "Policia Militar", "Secretária da Mulher","Auto escola João de Barro","Auto escola João de Barro", "Auto escola João de Barro"]);
+    const [parceiros, setParceiros] = useState(["Auto escola João de Barro", "Policia Militar", "Secretária da Mulher"]);
 
     return(
         <View
@@ -33,16 +35,22 @@ export default function Parceiros({navigation}){
             <InputParceiroFrequencia 
                 label={'Parceiro'}
                 placeholder={'Digite o nome do parceiro'}
+                dataArray={parceiros}
+                setDataArray ={setParceiros}
+                setIsRefreshing ={setIsRefreshing}
             />
 
             <ListaParceirosFrequencia 
                 label={'Parceiros Atuais'}
-                parceiros = {parceiros}
+                dataArray = {parceiros}
+                
+                isRefreshing = {isRefreshing}
+                setIsRefreshing ={setIsRefreshing}
             />
 
             <AtualizarParceirosBtn 
                 navigation={navigation}
-
+                dataArray={parceiros} //por alguma razão os nomes das props da mesma pagina precisam ser iguais
             />
 
         </View>
