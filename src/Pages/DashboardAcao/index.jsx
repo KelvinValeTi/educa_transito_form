@@ -15,7 +15,7 @@ export default function DashboardAcao({navigation, route}){
 
   const {acaoAtual} = useContext(AuthContext);
   const {isConnectedAcoes} = useContext(AuthContext);
-  
+
   /**
    * prevenindo que o usuário use o botão do android para voltar (POG)
    * 
@@ -37,8 +37,15 @@ export default function DashboardAcao({navigation, route}){
   }, []);
   // fim do gestureEnabled improvisado da documentação do react navigation
 
-
-  /**um loading ação bem aqui*/
+  function campoVazio(param){
+    
+    if(param.length===0){
+      return true;
+    }else{
+      return false;
+    }
+  }
+      
 
   return(
     <>
@@ -68,19 +75,19 @@ export default function DashboardAcao({navigation, route}){
         
         <BtnOptions 
           title={'Frequência'}
-          isEmpty={true}
+          isEmpty={campoVazio(acaoAtual.equipe)}
           navigation={navigation}
         />  
 
         <BtnOptions 
           title={'Parceiros'}
-          isEmpty={true}
+          isEmpty={campoVazio(acaoAtual.parceiros)}
           navigation={navigation}
         />   
         
         <BtnOptions 
           title={'Observações'}
-          isEmpty={true}
+          isEmpty={campoVazio(acaoAtual.obs)}
           navigation={navigation}
         />        
 
