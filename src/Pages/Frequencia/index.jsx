@@ -6,12 +6,12 @@ import styles from "./styles";
 
 import InputParceiroFrequencia from "../../Components/ParceirosFrequencia/InputParceiroFrequencia";
 import ListaParceirosFrequencia from "../../Components/ParceirosFrequencia/ListaParceirosFrequencia";
-import AtualizarParceirosBtn from "../../Components/ParceirosFrequencia/AtualizarParceirosBtn";
+import AtualizarFrequenciaBtn from "../../Components/ParceirosFrequencia/AtualizarFrequenciaBtn";
 
 import VoltarBtn from "../../Components/VoltarBtn";
 
 //function Parceiros
-export default function Parceiros({navigation}){
+export default function Frequencia({navigation}){
 
     const {acaoAtual} = useContext(AuthContext);
 
@@ -19,7 +19,7 @@ export default function Parceiros({navigation}){
     const [isRefreshing, setIsRefreshing] = useState(false);
 
     //dados para teste
-    const [parceiros, setParceiros] = useState(acaoAtual.parceiros);
+    const [frequencia, setFrequencia] = useState(acaoAtual.equipe);
 
     return(
         <View
@@ -29,28 +29,29 @@ export default function Parceiros({navigation}){
                 navigation={navigation}
             /> 
             
-            <Text style={styles.title}>Parceiros</Text>
+            <Text style={styles.title}>Frequência</Text>
             <View style={styles.underlineDecor} /> 
 
             <InputParceiroFrequencia 
-                label={'Parceiro'}
-                placeholder={'Digite o nome do parceiro'}
-                dataArray={parceiros}
-                setDataArray ={setParceiros}
+                label={'Frequência'}
+                placeholder={'Insira o nome da pessoa'}
+                dataArray={frequencia}
+                setDataArray ={setFrequencia}
                 setIsRefreshing ={setIsRefreshing}
             />
 
             <ListaParceirosFrequencia 
-                label={'Parceiros Atuais'}
-                dataArray = {parceiros}
-                setDataArray = {setParceiros}
+                label={'Frequência Atual'}
+                dataArray = {frequencia}
+                setDataArray = {setFrequencia}
             />
 
-            <AtualizarParceirosBtn
+            <AtualizarFrequenciaBtn
                 navigation={navigation}
-                dataArray={parceiros} //por alguma razão os nomes das props da mesma pagina precisam ser iguais
+                dataArray={frequencia} //por alguma razão os nomes das props da mesma pagina precisam ser iguais
                 id = {acaoAtual._id}
             />
+
 
         </View>
     );

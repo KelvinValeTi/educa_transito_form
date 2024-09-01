@@ -7,21 +7,19 @@ export default function BtnOptions({title, isEmpty, navigation}){
     function btnPressed(){
         switch(title){
             case "Editar dados obrigatorios":
-                console.log('Editar dados obrigatorios')
                 navigation.navigate('UpdateAcao');
                 break;
             case "Frequência":
-                console.log('Frequência')
+                navigation.navigate('Frequencia');
                 break;
             case "Parceiros":
-                console.log('Parceiros');
                 navigation.navigate('Parceiros');
                 break;
             case "Observações":
                 console.log('Observações')
                 break;
             default:
-                console.log('verificar variavel title')       
+                console.log('verificar variavel title')    
         }
     }
 

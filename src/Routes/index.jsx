@@ -10,6 +10,7 @@ import CadastroAcao from "../Pages/CadastroAcao";
 import DashboardAcao from "../Pages/DashboardAcao";
 import UpdateAcao from "../Pages/UpdateAcao";
 import Parceiros from "../Pages/Parceiros";
+import Frequencia from "../Pages/Frequencia";
 
 import DataProvider from "../Contexts/DataProvider";
 
@@ -32,6 +33,7 @@ export default function Routes(){
                     <Stack.Screen name="DashboardAcao" component={DashboardAcao}/>
                     <Stack.Screen name="UpdateAcao" component={UpdateAcao}/>
                     <Stack.Screen name="Parceiros" component={Parceiros}/>
+                    <Stack.Screen name="Frequencia" component={Frequencia}/>
                     
                 </Stack.Navigator>
             </DataProvider>

@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Contexts/DataProvider";
 
 import api from "../../../ConnectApi";
 
-export default function AtualizarParceirosBtn({navigation, dataArray, id}){
+export default function AtualizarFrequenciaBtn({navigation, dataArray, id}){
 
     const {setIsConnectedAcoes} =useContext(AuthContext);
 
@@ -13,7 +13,7 @@ export default function AtualizarParceirosBtn({navigation, dataArray, id}){
         console.log('entrou em atualizar');
 
         api.put(`/acao/${id}`, {
-            parceiros:dataArray
+            equipe:dataArray
           })
           .then(function (response) {
             console.log(response);
