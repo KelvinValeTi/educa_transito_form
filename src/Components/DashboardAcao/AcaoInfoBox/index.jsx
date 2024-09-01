@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         width:RFValue(270),
         height:RFValue(2),
         backgroundColor:"#FFFFFF",
-        alignSelf:'center'
+        alignSelf:'center',
     },
     descricao:{
         color:'#FFFFFF',
