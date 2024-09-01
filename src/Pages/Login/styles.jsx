@@ -1,13 +1,14 @@
-import { StyleSheet} from "react-native";
+import { ImageBackground, StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor: "#23252B",
+    },
+    imageBackground:{
+        flex:1,
         justifyContent:"flex-end",
         alignItems: "center",
-
     },
     subContainer:{
         marginBottom:RFValue(40),

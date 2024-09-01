@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, ImageBackground } from "react-native";
 import { AuthContext } from "../../Contexts/DataProvider";
 
 import styles from "./styles";
@@ -24,31 +24,38 @@ export default function Login({navigation}){
                 <LoadingDatabaseUsers /> 
                 :
                 <View style={styles.container}>
-                <View style={styles.subContainer}>
-                    <Text style ={styles.userPasswordTitle}>Usuário:</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setUser}
-                        value={user}
-                        autoCapitalize="none"
-                    />
-    
-                    <Text style ={styles.userPasswordTitle}>Senha:</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={setPassword}
-                        value={password}
-                    />
-            
-                    <LoginBtn
-                        user={user}
-                        password={password}
-                        navigation = {navigation}
-                    />
-            
-                    <ForgetPasswordBtn navigation = {navigation} />
+                    <ImageBackground
+                        source={require('../../assets/login_page.jpg')}
+                        resizeMode="cover"
+                        style={styles.imageBackground}
+                    >
+
+                    <View style={styles.subContainer}>
+                        <Text style ={styles.userPasswordTitle}>Usuário:</Text>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setUser}
+                            value={user}
+                            autoCapitalize="none"
+                        />
+        
+                        <Text style ={styles.userPasswordTitle}>Senha:</Text>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setPassword}
+                            value={password}
+                        />
+                
+                        <LoginBtn
+                            user={user}
+                            password={password}
+                            navigation = {navigation}
+                        />
+                
+                        <ForgetPasswordBtn navigation = {navigation} />
+                    </View>
+                    </ImageBackground>
                 </View>
-            </View>
         }
         </>
         
