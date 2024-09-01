@@ -22,7 +22,7 @@ export default function Routes(){
         <NavigationContainer>
             <DataProvider>
                 <Stack.Navigator 
-                    initialRouteName='Observacoes' 
+                    initialRouteName='Login' 
                     screenOptions={
                         {headerShown: false, gestureEnabled:false}
                     }

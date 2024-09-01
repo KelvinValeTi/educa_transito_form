@@ -16,7 +16,7 @@ export default function BtnOptions({title, isEmpty, navigation}){
                 navigation.navigate('Parceiros');
                 break;
             case "Observações":
-                console.log('Observações')
+                navigation.navigate('Observacoes');
                 break;
             default:
                 console.log('verificar variavel title')    

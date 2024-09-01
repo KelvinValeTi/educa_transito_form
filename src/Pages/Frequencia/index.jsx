@@ -26,6 +26,7 @@ export default function Frequencia({navigation}){
         >       
             <VoltarBtn 
                 navigation={navigation}
+                voltaDuasStacks={false}
             /> 
             
             <Text style={styles.title}>Frequência</Text>

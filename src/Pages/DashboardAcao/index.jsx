@@ -38,11 +38,12 @@ export default function DashboardAcao({navigation, route}){
   // fim do gestureEnabled improvisado da documentação do react navigation
 
   function campoVazio(param){
-    
-    if(param.length===0){
-      return true;
-    }else{
+    if(typeof param == "undefined"){
       return false;
+    }else if(param.length===0){
+        return true;
+    }else{
+        return false;
     }
   }
       
@@ -59,7 +60,7 @@ export default function DashboardAcao({navigation, route}){
 
         <VoltarBtn 
           navigation={navigation}
-          voltaDuasStacks={route.params.voltaDuasStacks} 
+          voltaDuasStacks={route.params.voltaDuasStacks} //vem do component CadastrarBtn
           acaoAtual={{acaoAtual}}
         />
 

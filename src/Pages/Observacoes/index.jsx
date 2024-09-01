@@ -22,7 +22,7 @@ export default function Observacoes({navigation}){
     //dados para teste
     const initTest = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."]
 
-    const [observacoes, setObservacoes] = useState(initTest);
+    const [observacoes, setObservacoes] = useState(acaoAtual.obs);
 
     return(
         <View
@@ -30,6 +30,7 @@ export default function Observacoes({navigation}){
         >       
             <VoltarBtn 
                 navigation={navigation}
+                voltaDuasStacks={false}
             /> 
             
             <Text style={styles.title}>Observações</Text>
@@ -46,14 +47,12 @@ export default function Observacoes({navigation}){
                 setDataArray = {setObservacoes}
             />
 
-
-{/** 
             <AtualizarObservacoesBtn
                 navigation={navigation}
-                dataArray={parceiros} //por alguma razão os nomes das props da mesma pagina precisam ser iguais
+                dataArray={observacoes} //por alguma razão os nomes das props da mesma pagina precisam ser iguais
                 id = {acaoAtual._id}
             />
-*/}
+
         </View>
     );
 }

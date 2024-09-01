@@ -26,6 +26,7 @@ export default function Parceiros({navigation}){
         >       
             <VoltarBtn 
                 navigation={navigation}
+                voltaDuasStacks={false}
             /> 
             
             <Text style={styles.title}>Parceiros</Text>

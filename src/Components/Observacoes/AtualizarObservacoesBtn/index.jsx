@@ -11,9 +11,11 @@ export default function AtualizarObservacoesBtn({navigation, dataArray, id}){
 
     function atualizar(){
         console.log('entrou em atualizar');
+        console.log(id)
 
+        
         api.put(`/acao/${id}`, {
-            parceiros:dataArray
+            obs:dataArray
           })
           .then(function (response) {
             console.log(response);
