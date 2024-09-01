@@ -7,6 +7,7 @@ import { AuthContext } from "../../../Contexts/DataProvider";
 import api from '../../../ConnectApi';
 
 import LoadingAnimation from "../LoadingAnimation";
+import ErrorConnectionAnimation from "../ErrorConnectionAnimation";
 
 export default function LoadingDatabaseUsers(){
     
@@ -43,18 +44,9 @@ export default function LoadingDatabaseUsers(){
                     text={'Estou me conectando à base de dados'}
                 />
                 :
-                <>
-                    <Text style= {styles.text}>{errorConnection}</Text>
-                    
-                    <TouchableOpacity 
-                        onPress={()=>{
-                            BackHandler.exitApp();
-                        }}
-                        style= {styles.btn}
-                    >
-                        <Text  style= {styles.textBtn}> Sair</Text>
-                    </TouchableOpacity>
-                </>
+                <ErrorConnectionAnimation 
+                    error={errorConnection}
+                />     
             }
             
         </View>
@@ -70,16 +62,6 @@ const styles = StyleSheet.create({
         alignItems:"center",
         backgroundColor:"#23252B"
    },
-   text:{
-    fontSize:RFValue(30),
-    color:"#FFFFFF",
-    textAlign:'center'
-   },
-   textBtn:{
-    fontSize:RFValue(30),
-    color:"#FFFFFF",
-    textAlign:'center'
-   }
 });
 
 

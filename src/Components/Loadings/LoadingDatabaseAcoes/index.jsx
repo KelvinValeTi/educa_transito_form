@@ -7,6 +7,7 @@ import { AuthContext } from "../../../Contexts/DataProvider";
 import api from '../../../ConnectApi'
 
 import LoadingAnimation from "../LoadingAnimation";
+import ErrorConnectionAnimation from "../ErrorConnectionAnimation";
 
 //Function LoadingDatabaseAcoes
 export default function LoadingDatabaseAcoes(){
@@ -64,7 +65,9 @@ export default function LoadingDatabaseAcoes(){
                     text={'Estou me conectando à sua base de dados de ações'}
                 />
                 :
-                <Text style= {styles.text}>{errorConnection}</Text>
+                <ErrorConnectionAnimation 
+                    error={errorConnection}
+                />
             }
             
         </View>
@@ -80,11 +83,6 @@ const styles = StyleSheet.create({
         alignItems:"center",
         backgroundColor:"#23252B"
    },
-   text:{
-    fontSize:RFValue(30),
-    color:"#FFFFFF",
-    textAlign:'center'
-   }
 });
 
 

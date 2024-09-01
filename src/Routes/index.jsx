@@ -13,9 +13,6 @@ import Parceiros from "../Pages/Parceiros";
 import Frequencia from "../Pages/Frequencia";
 import Observacoes from "../Pages/Observacoes";
 
-//testes
-import LoadingAnimation from "../Components/Loadings/LoadingAnimation";
-
 import DataProvider from "../Contexts/DataProvider";
 
 const Stack = createNativeStackNavigator();
@@ -39,8 +36,6 @@ export default function Routes(){
                     <Stack.Screen name="Parceiros" component={Parceiros}/>
                     <Stack.Screen name="Frequencia" component={Frequencia}/>
                     <Stack.Screen name="Observacoes" component={Observacoes}/>
-
-                    <Stack.Screen name="LoadingAnimation" component={LoadingAnimation}/>
                     
                 </Stack.Navigator>
             </DataProvider>
