@@ -6,6 +6,8 @@ import { AuthContext } from "../../../Contexts/DataProvider";
 //conectando a api de usuarios no banco de dados
 import api from '../../../ConnectApi';
 
+import LoadingAnimation from "../LoadingAnimation";
+
 export default function LoadingDatabaseUsers(){
     
     const {databaseUsers, setDatabaseUsers} = useContext(AuthContext);
@@ -37,7 +39,9 @@ export default function LoadingDatabaseUsers(){
         <View style= {styles.container}>
             {
                 errorConnection===''?
-                <Text style= {styles.text}>Carregando Banco de Dados</Text>
+                <LoadingAnimation 
+                    text={'Estou me conectando à base de dados'}
+                />
                 :
                 <>
                     <Text style= {styles.text}>{errorConnection}</Text>
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         alignItems:"center",
-        backgroundColor:"#131313"
+        backgroundColor:"#23252B"
    },
    text:{
     fontSize:RFValue(30),

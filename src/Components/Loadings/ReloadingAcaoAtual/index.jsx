@@ -6,6 +6,8 @@ import { AuthContext } from "../../../Contexts/DataProvider";
 //conectando a api de usuarios no banco de dados
 import api from '../../../ConnectApi'
 
+import LoadingAnimation from "../LoadingAnimation";
+
 //Function LoadingDatabaseAcoes
 export default function ReloadingAcaoAtual({id}){
     
@@ -73,7 +75,9 @@ export default function ReloadingAcaoAtual({id}){
         <View style= {styles.container}>
             {
                 errorConnection===''?
-                <Text style= {styles.text}>Calma, puxando as informações da Ação atual</Text>
+                <LoadingAnimation 
+                    text={'Estou atualizando as informações da ação atual'}
+                />
                 :
                 <Text style= {styles.text}>{errorConnection}</Text>
             }
@@ -89,7 +93,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         alignItems:"center",
-        backgroundColor:"#131313"
+        backgroundColor:"#23252B"
    },
    text:{
     fontSize:RFValue(30),
