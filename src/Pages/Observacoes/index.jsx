@@ -35,18 +35,15 @@ export default function Observacoes({navigation}){
             <Text style={styles.title}>Observações</Text>
             <View style={styles.underlineDecor} /> 
 
+            <InputObservacoes 
+                dataArray={observacoes}
+                setDataArray ={setObservacoes}
+                setIsRefreshing ={setIsRefreshing}
+            />
 
             <ListaObservacoes 
                 dataArray = {observacoes}
                 setDataArray = {setObservacoes}
-            />
-            
-            <InputObservacoes 
-                label={'Parceiro'}
-                placeholder={'Digite o nome do parceiro'}
-                dataArray={observacoes}
-                setDataArray ={setObservacoes}
-                setIsRefreshing ={setIsRefreshing}
             />
 
 

@@ -3,15 +3,15 @@ import { View, Text, TextInput, TouchableOpacity, Image} from "react-native";
 
 import styles from "./styles";
 
-export default function InputObservacoes({label, placeholder, dataArray, setDataArray, setIsRefreshing}){
+export default function InputObservacoes({dataArray, setDataArray, setIsRefreshing}){
     
     const [input, setInput] = useState('');
 
-    function addParceiro(){
+    function addObservacao(){
         //validação aqui para evitar de ter dois parceiros iguais
         dataArray.unshift(input);
-        const novoParceiro = dataArray;
-        setDataArray(novoParceiro);
+        const novaObservacao = dataArray;
+        setDataArray(novaObservacao);
         
         refresh();
         
@@ -28,20 +28,21 @@ export default function InputObservacoes({label, placeholder, dataArray, setData
 
     return(
         <View style={styles.container}>
-            <Text style={styles.label}>Inserir {label}:</Text>
-            <View style={styles.subContainer}>
+            <Text style={styles.label}>Inserir Observação:</Text>
+            
                 <TextInput
+                    multiline
                     style={styles.input}
                     onChangeText={setInput}
                     value={input}
-                    placeholder={placeholder}
+                    placeholder="Digite uma observação sobre a ação"
                     placeholderTextColor="#bebebe"
                 />
 
                 <TouchableOpacity 
                     style={styles.addBtn}
                     onPress={()=>{
-                        addParceiro();
+                        addObservacao();
                     }}
                 >
                     <Image 
@@ -49,7 +50,7 @@ export default function InputObservacoes({label, placeholder, dataArray, setData
                         source={require('../../../assets/add_icon.png')}
                     />
                 </TouchableOpacity>
-            </View>
+            
         </View>
     );
 }

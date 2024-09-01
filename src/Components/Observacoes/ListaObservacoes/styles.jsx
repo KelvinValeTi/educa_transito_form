@@ -5,13 +5,19 @@ const styles = StyleSheet.create({
     container:{
         marginTop:RFValue(20),
         width:RFValue(300),
-        gap:RFValue(10)
+        gap:RFValue(5)
+    },
+    label:{
+        color:'#FFFFFF',
+        fontSize:RFValue(16),
+        fontFamily:"Inter_700Bold",
+        textAlign:'left',
+        paddingLeft:RFValue(15),
     },
     observacao:{
-        width:RFValue(270),
+        width:RFValue(280),
         height:RFValue(200),
         backgroundColor:"#FFFFFF",
-        marginTop:RFValue(5),
         marginHorizontal:RFValue(5),
         borderRadius:RFValue(20),
         padding:RFValue(20),
