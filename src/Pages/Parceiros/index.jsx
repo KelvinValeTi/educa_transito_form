@@ -18,7 +18,6 @@ export default function Parceiros({navigation}){
     //variavel que controla o refresh da flatlist
     const [isRefreshing, setIsRefreshing] = useState(false);
 
-    //dados para teste
     const [parceiros, setParceiros] = useState(acaoAtual.parceiros);
 
     return(

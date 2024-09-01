@@ -11,6 +11,7 @@ import DashboardAcao from "../Pages/DashboardAcao";
 import UpdateAcao from "../Pages/UpdateAcao";
 import Parceiros from "../Pages/Parceiros";
 import Frequencia from "../Pages/Frequencia";
+import Observacoes from "../Pages/Observacoes";
 
 import DataProvider from "../Contexts/DataProvider";
 
@@ -21,7 +22,7 @@ export default function Routes(){
         <NavigationContainer>
             <DataProvider>
                 <Stack.Navigator 
-                    initialRouteName='Login' 
+                    initialRouteName='Observacoes' 
                     screenOptions={
                         {headerShown: false, gestureEnabled:false}
                     }
@@ -34,6 +35,7 @@ export default function Routes(){
                     <Stack.Screen name="UpdateAcao" component={UpdateAcao}/>
                     <Stack.Screen name="Parceiros" component={Parceiros}/>
                     <Stack.Screen name="Frequencia" component={Frequencia}/>
+                    <Stack.Screen name="Observacoes" component={Observacoes}/>
                     
                 </Stack.Navigator>
             </DataProvider>
