@@ -3,9 +3,9 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 const styles = StyleSheet.create({
     btn:{
-        backgroundColor:'#C6632C',
-        width:RFValue(200),
-        height:RFValue(60),
+        backgroundColor:'#5AA93F',
+        width:RFValue(180),
+        height:RFValue(50),
         borderRadius:RFValue(12),
         flexDirection:'row',
         alignItems:'center',

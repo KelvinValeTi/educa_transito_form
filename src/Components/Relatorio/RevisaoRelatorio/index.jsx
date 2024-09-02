@@ -1,99 +1,90 @@
-import React, {useContext, useState} from "react";
-import { Text, TouchableOpacity, Share, Alert, Image} from "react-native";
-import { AuthContext } from "../../../Contexts/DataProvider";
+import React from "react";
+import { Text, ScrollView} from "react-native";
 
 import styles from "./styles";
 
-export default function RevisaoRelatorio(){
-    /** 
-    //test
-    const coordenador='Alexandre Pereira';
-    const projeto = 'Somos todos Pedestres';
-    const local = 'Praça Deodoro';
-    const municipio = 'São Luís';
-    const data_acao = '08/08/2024';
-    const horario = '09:00';
-    const publico_atingido = "200";
-    const qtd_material = '200';
-    const publico_alvo="Pedestres e público em geral";
-    const parceiros = ['PRE', 'PRF', 'Vida no Trânsito', 'Associação do sol nascente'];
-    const equipe =['Marcia Renata', 'Julio Fernandes','Kelvin Vale', 'Alexandre Pereira','Ariana Barros','Nathalia Mendes', 'Rubens Calmon', 'Maria de Fátima'];
-    const obs =['Abordagem educativa com entrega de material educativo.','A ação foi realizada em dois locais, sendo o segundo no Jaracaty.', 'Transporte foi realizado pela Empresa Transporte Vitória'];
-    */
-   
-    //coloca todas as informações em uma unica variavel mais amigavel ao usuário com virgulas
-    function formataArray(param){
-        let arrayFormat='';
+export default function RevisaoRelatorio({acaoAtual}){
+   //coloca todas as informações em uma unica variavel mais amigavel ao usuário com virgulas
+  function formataArray(param){
+    let arrayFormat='';
 
-        for(let i=0; i < param.length; i++){
-            if(param[i]=== param[param.length-1]){
-                arrayFormat = arrayFormat + param[i];
-            }else{
-                arrayFormat = arrayFormat + param[i]+'\n';
-            }
+    for(let i=0; i < param.length; i++){
+        if(param[i]=== param[param.length-1]){
+            arrayFormat = arrayFormat + param[i];
+        }else{
+            arrayFormat = arrayFormat + param[i]+'\n';
         }
-        return arrayFormat;
     }
 
-    function formataObs(param){
-        let obsFormatada='';
-
-        for(let i=0; i < param.length; i++){
-            obsFormatada = obsFormatada + "\n*Observação "+(i+1)+":* \n" +param[i]+'\n';
-        }
-        return obsFormatada;
+    if(arrayFormat===''){
+      arrayFormat = 'Não há'
+      return arrayFormat;
+    }else{
+      return arrayFormat;
     }
 
-    //formatando os dados em uma única mensagem para ser enviada por whatsApp
-    function WhatsAppRelatorio(){
-        const relatorioWhats = '*Projeto*: '+ projeto + 
-                                "\n\n*Coordenador*: " + coordenador +
-                                "\n*Local*: "+ local +
-                                "\n*Município*: "+ municipio +
-                                "\n*Data*: " + data_acao +
-                                "\n*Horário*: " + horario +
-                                "\n*Quantidade de material*: " + qtd_material +
-                                "\n*Público Atingido*: " + publico_atingido +
-                                "\n*Público Alvo*: " + publico_alvo +
-                                "\n\n*Equipe/ Frequência*:\n" + formataArray(equipe) +
-                                "\n\n*Parceiros*:\n" + formataArray(parceiros) +
-                                "\n\n" + formataObs(obs)        
+  }
 
-        return relatorioWhats;
+  function formataObs(param){
+    let obsFormatada='';
+
+    for(let i=0; i < param.length; i++){
+        obsFormatada = obsFormatada + "\n-> Observação "+(i+1)+": \n" +param[i]+'\n';
     }
+    return obsFormatada;
+  }
 
-    //função que vai compartilhar
-    const onShare = async () => {
-        try {
-          const result = await Share.share({
-            message:
-              WhatsAppRelatorio(),
-          });
-          if (result.action === Share.sharedAction) {
-            if (result.activityType) {
-              // shared with activity type of result.activityType
-            } else {
-              // shared
-            }
-          } else if (result.action === Share.dismissedAction) {
-            // dismissed
-          }
-        } catch (error) {
-          Alert.alert(error.message);
-        }
-      };
+  //----------- return
+  return(
+    <ScrollView style={styles.container}>
+      <Text style={styles.textBold}>Projeto:
+        <Text style={styles.text}> {acaoAtual.projeto}</Text>
+      </Text>
 
-    //----------- return
-    return(
-            <TouchableOpacity 
-                style={styles.btn}
-                onPress={onShare}
-            >
-                <Image 
-                  style={styles.icon}
-                  source={require('../../../assets/compartilhar_icon.png')}
-                />
-                <Text style={styles.textBtn}>Compartilhar</Text>
-            </TouchableOpacity>
-    );
+      <Text style={styles.textBold}>Coordenador:
+        <Text style={styles.text}> {acaoAtual.coordenador}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>Local:
+        <Text style={styles.text}> {acaoAtual.local}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>Município:
+        <Text style={styles.text}> {acaoAtual.municipio}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>Data:
+        <Text style={styles.text}> {acaoAtual.data_acao}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>Horário:
+        <Text style={styles.text}> {acaoAtual.horario}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>Quantidade de Material:
+        <Text style={styles.text}> {acaoAtual.qtd_material}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>Público Atingido:
+        <Text style={styles.text}> {acaoAtual.publico_atingido}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>Público Alvo:
+        <Text style={styles.text}> {acaoAtual.publico_alvo}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>{'\n'}Equipe/ Frequência:
+        <Text style={styles.text}> {'\n'}{formataArray(acaoAtual.equipe)}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>{'\n'}Parceiros:
+        <Text style={styles.text}> {'\n'}{formataArray(acaoAtual.parceiros)}</Text>
+      </Text>
+
+      <Text style={styles.textBold}>{'\n'}Observações:
+        <Text style={styles.text}> {'\n'}{formataObs(acaoAtual.obs)}</Text>
+      </Text>
+
+    </ScrollView>
+  );
 }

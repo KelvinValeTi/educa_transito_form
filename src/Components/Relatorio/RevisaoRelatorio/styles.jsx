@@ -2,24 +2,25 @@ import {StyleSheet} from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 const styles = StyleSheet.create({
-    btn:{
-        backgroundColor:'#C6632C',
-        width:RFValue(200),
-        height:RFValue(60),
-        borderRadius:RFValue(12),
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'center',
-        gap:RFValue(5)
+    container:{
+        width:RFValue(300),
+        height:RFValue(300),
+        backgroundColor:"#C6632C",
+        marginTop:RFValue(10),
+        marginBottom:RFValue(50),
+        paddingHorizontal:RFValue(12),
+        paddingVertical:RFValue(10),
+        borderRadius:RFValue(12)
     },
-    textBtn:{
+    textBold:{
+        fontSize:RFValue(14),
         color:'#FFFFFF',
-        fontFamily:'Inter_700Bold',
-        fontSize: RFValue(20),
+        fontFamily:'Inter_800ExtraBold',
     },
-    icon:{
-        width:RFValue(30),
-        height:RFValue(30),
+    text:{
+        fontSize:RFValue(14),
+        color:'#FFFFFF',
+        fontFamily:'Inter_500Medium',
     }
 
 });
