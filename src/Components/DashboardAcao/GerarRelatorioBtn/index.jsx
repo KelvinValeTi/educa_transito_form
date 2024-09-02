@@ -8,7 +8,7 @@ export default function GerarRelatorioBtn({navigation}){
         <TouchableOpacity 
             style={styles.btn}
             onPress={()=>{
-                console.log('gerar relatorio!!');
+                navigation.navigate('Relatorio');
             }}    
         >
             <Text style={styles.title}>Gerar Relatório</Text>

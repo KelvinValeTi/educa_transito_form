@@ -23,7 +23,7 @@ export default function Routes(){
         <NavigationContainer>
             <DataProvider>
                 <Stack.Navigator 
-                    initialRouteName='Relatorio' 
+                    initialRouteName='Login' 
                     screenOptions={
                         {headerShown: false, gestureEnabled:false}
                     }
