@@ -1,7 +1,10 @@
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'expo-status-bar';
+
 import 'react-native-gesture-handler';
+
 
 import Login from "../Pages/Login";
 import DashboardUser from "../Pages/DashboardUser";
@@ -21,6 +24,7 @@ const Stack = createNativeStackNavigator();
 export default function Routes(){
     return(
         <NavigationContainer>
+            <StatusBar style="light" backgroundColor="#23252B"/>
             <DataProvider>
                 <Stack.Navigator 
                     initialRouteName='Login' 

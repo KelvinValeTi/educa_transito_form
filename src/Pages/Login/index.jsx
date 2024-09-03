@@ -44,6 +44,7 @@ export default function Login({navigation}){
                             style={styles.input}
                             onChangeText={setPassword}
                             value={password}
+                            autoCapitalize="none"
                         />
                 
                         <LoginBtn
